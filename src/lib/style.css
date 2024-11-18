@@ -1,0 +1,27 @@
+.glass {
+        backdrop-filter: blur(128px) saturate(500%);
+        -webkit-backdrop-filter: blur(64px) saturate(180%);
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 7px;
+        border: 7px solid rgba(255, 255, 255, 0.125);
+        color: white;
+    }
+
+    a {
+        text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+        text-underline-offset: 0.2em;
+        transition: text-decoration-color 200ms, text-underline-offset 200ms;
+    }
+
+    a:hover {
+        text-decoration-color: rgba(255, 206, 168, 1);
+        text-underline-offset: 0.1em;
+    }
+
+:root {
+    --accent-color1: rgb(144, 58, 237);
+    --accent-color2: rgb(14, 182, 194);
+    --accent-color3: rgb(241, 103, 24);
+    --accent-grey: rgb(142, 131, 126);
+}
+
