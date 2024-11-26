@@ -1,6 +1,6 @@
 .glass {
         backdrop-filter: blur(128px) saturate(500%);
-        -webkit-backdrop-filter: blur(64px) saturate(180%);
+        -webkit-backdrop-filter: blur(128px) saturate(500%);
         background-color: rgba(0, 0, 0, 0.5);
         border-radius: 7px;
         border: 7px solid rgba(255, 255, 255, 0.125);
@@ -13,8 +13,12 @@
         transition: text-decoration-color 200ms, text-underline-offset 200ms;
     }
 
+    a:link , a:visited {
+        color: white;
+    }
+
     a:hover {
-        text-decoration-color: rgba(255, 206, 168, 1);
+        text-decoration-color: var(--accent-color3);
         text-underline-offset: 0.1em;
     }
 

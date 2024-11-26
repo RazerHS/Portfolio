@@ -1,12 +1,21 @@
 <script>
+    import {onMount} from 'svelte';
 
+    onMount(() => {
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            //   header.classList.toggle('fade-out-header', window.scrollY == 0);
+            //   header.classList.toggle('fade-in-header', window.scrollY != 0);
+        });
+    });
 </script>
 
 <style>
     header {
         position: sticky;
         top: 0;
-        z-index: 1;
+        z-index: 10;
         height: 4.5em;
         margin: auto;
         margin-bottom: 2em;
@@ -26,6 +35,7 @@
     a {
         overflow: hidden;
         width: auto;
+        color: white;
     }
 
     @media (max-width: 768px) {
@@ -45,12 +55,36 @@
             width: 30%;
         }
     }
+
+    @keyframes fadeHeader {
+        0% {
+            background-color: rgba(0, 0, 0, 0);
+            
+        }
+        100% {
+            background-color: rgba(78, 0, 0, 1);
+        }
+    }
+
+    .fade-in-header {
+        animation: fadeHeader 1s forwards;
+    }
+
+    .fade-out-header
+     {
+        animation: fadeHeader 2s both reverse;
+     }
+
+    .header-border {
+        border: 3px solid black;
+    }
+
 </style>
 
-<header class='glass'>
+<header class='glass header-border'>
     <nav>       
-        <a>Home </a>
-        <a>About </a>
-        <a>Contact </a>
+        <a href='#about'>Home</a>
+        <a>About</a>
+        <a>Contact</a>
     </nav>
 </header>

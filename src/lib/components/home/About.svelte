@@ -108,7 +108,7 @@
 
 </style>
 
-<div class='about-main-container'>
+<div class='about-main-container' name="about">
     <div class=img-container>
         <img src='/about_circular.png' alt='me' id='circular-img'>
     </div>

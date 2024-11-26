@@ -155,7 +155,7 @@
     </div>
         <div class='content-container'>
             <div class='title-container'>
-                <h2> <a href=''> {name} </a></h2>
+                <h2> <a href='{"/" + name.toLowerCase().replace(' ', '_')}'> {name} </a></h2>
                 <div class='tools-container'>
                     {#each tools as tool}
                         <img class='tool-img' src={tool.toLowerCase() + "_icon.png"} alt=''>
