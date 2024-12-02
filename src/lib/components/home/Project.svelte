@@ -1,5 +1,6 @@
 <script> 
     import '$lib/style.css';
+
     let {name, tools, tags} = $props();
 </script>
 
@@ -38,6 +39,7 @@
         flex-direction: column;
         align-items: center;
         transition: all .6s;
+        border: 7px solid var(--glass-border-color);
     }
 
     .container:hover {

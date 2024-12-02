@@ -83,7 +83,7 @@
 
 <header class='glass header-border'>
     <nav>       
-        <a href='#about'>Home</a>
+        <a href='/'>Home</a>
         <a>About</a>
         <a>Contact</a>
     </nav>

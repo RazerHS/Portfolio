@@ -3,29 +3,51 @@
         -webkit-backdrop-filter: blur(128px) saturate(500%);
         background-color: rgba(0, 0, 0, 0.5);
         border-radius: 7px;
-        border: 7px solid rgba(255, 255, 255, 0.125);
+        border: 3px solid var(--glass-border-color);
         color: white;
     }
 
-    a {
-        text-decoration: underline 0.15em rgba(0, 0, 0, 0);
-        text-underline-offset: 0.2em;
-        transition: text-decoration-color 200ms, text-underline-offset 200ms;
-    }
+a {
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 200ms, text-underline-offset 200ms;
+}
 
-    a:link , a:visited {
-        color: white;
-    }
+a:link , a:visited {
+    color: white;
+}
 
-    a:hover {
-        text-decoration-color: var(--accent-color3);
-        text-underline-offset: 0.1em;
+a:hover {
+    text-decoration-color: var(--accent-color3);
+    text-underline-offset: 0.1em;
+}
+
+@media (max-width: 768px) {
+    .hide-on-mobile {
+        position: absolute;
+        visibility: hidden;
     }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hide-on-mobile {
+        position: absolute;
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 1025px) {
+    .hide-on-mobile {
+        visibility: visible;
+        position: relative;
+    }
+}
 
 :root {
     --accent-color1: rgb(144, 58, 237);
     --accent-color2: rgb(14, 182, 194);
     --accent-color3: rgb(241, 103, 24);
     --accent-grey: rgb(142, 131, 126);
+    --glass-border-color: rgba(255, 255, 255, 0.125);
 }
 

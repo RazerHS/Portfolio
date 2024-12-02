@@ -3,6 +3,28 @@
 </script>
 
 <style>
+
+    @media (max-width: 768px) {
+        .footer-container {
+            max-width: 60%;
+            min-width: 60%;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .footer-container {
+            max-width: 50%;
+            min-width: 50%;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .footer-container {
+            max-width: 40%;
+            min-width: 40%;
+        }
+    }
+
     footer {
         width: 100%;
         height: 20em;
@@ -12,11 +34,10 @@
 
     .footer-container {
         display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        width: 100%;
+        justify-content: space-between;
+        margin: auto;
+        width: 40%;
         height: 100%;
-        gap: 10em;
     }
 
     .footer-column {
@@ -24,12 +45,14 @@
         flex-direction: column;
         gap: 0.3em;
         padding-top: 3em;
+        width: fit-content;
     }
+
 </style>
 
 <footer class='glass'>
     <div class='footer-container'>
-        <div class='footer-column'> 
+        <div class='footer-column hide-on-mobile'> 
             <h3> Igi Inc. @2024</h3> 
         </div>
         <div class='footer-column'> 
