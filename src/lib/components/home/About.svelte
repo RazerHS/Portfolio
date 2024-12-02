@@ -1,5 +1,5 @@
 <script>
-    import '$lib/style.css';
+    import '$lib/styles/style.scss';
     import Button from '$lib/components/generic/Button.svelte';
 </script>
 

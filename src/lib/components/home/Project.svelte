@@ -1,5 +1,5 @@
 <script> 
-    import '$lib/style.css';
+    import '$lib/styles/style.scss';
 
     let {name, tools, tags} = $props();
 </script>
