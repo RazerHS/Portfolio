@@ -32,7 +32,7 @@
 
 <style>
    :root {
-		--color-bg1: rgb(30, 3, 44);
+		--color-bg1: rgb(3, 3, 44);
 		--color-bg2: rgb(0, 0, 0);
 		--color1: 18, 113, 255;
 		--color2: 221, 74, 255;
@@ -88,6 +88,7 @@
         left: 0;
         z-index: -1;
         background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+        overflow: hidden;
     }
 
     svg {
@@ -192,6 +193,17 @@
 
         opacity: 0.7;
     }
+
+    img {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.2;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
 </style>
 
 <div class='gradient-bg'> 
@@ -213,4 +225,6 @@
         <div class='interactive'> </div>
     </div>
 </div>
+ <img src='/galaxy.jpg' alt='bg'>
+
 

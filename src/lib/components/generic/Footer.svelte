@@ -28,8 +28,10 @@
     footer {
         width: 100%;
         height: 20em;
-        margin-top: 5em;
         font-family: Lexend;
+        box-shadow: 0 0 10px 0.1px rgb(142, 142, 142) inset;
+        backdrop-filter: blur(32px) saturate(100%);
+        border: 0;
     }
 
     .footer-container {

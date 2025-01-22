@@ -1,1 +1,12 @@
-<div> this isb efiend </div>
+<script>
+    import Post from '$lib/components/generic/Post.svelte';
+
+    let title = 'Polished Trust';
+    let featuredImageSrc = '/polished_trust_featured.png';
+    let timeline = "February 2024 - July 2024";
+    let role = 'Research, Design, Programming';
+
+</script>
+
+<Post {title} {featuredImageSrc} {timeline} {role}/>
+

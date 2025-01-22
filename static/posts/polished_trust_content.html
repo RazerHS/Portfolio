@@ -1,0 +1,36 @@
+<div class="content">
+    <p> I love card games and playing them with my friends, but they do have a looming problem - they’re usually just a tad bit complex for those new to them. While I happily spent my days obsessing over Slay the Spire and Balatro, it’s a shame those around me who never quite understood why. My graduation project was the perfect medium to tackle this issue, for which I created Polished Trust: a co-op roguelike deckbuilder experience with the goal to make card games accessible to new card game players.   </p>
+    <p> I developed this as my graduation project and was able to combine many different aspects of my skillset and interests to create a unique twist on the trendy roguelike deckbuilder.  </p>
+    <button class='glass collapsible'><h2>The Multiplayer Workflow</h2></button>
+    <div class='collapsible-content glass collapsible-hidden'>
+        <p>Being the first multiplayer game I developed on my own, I took some advice from my supervisor and used Photon Fusion 2 (PUN2) as my networking solution. PUN2 integrates very nicely into standard Unity workflows and allows for client hosting mode, ideal for a co-op card game. </p>
+
+        <p>This made it possible to reuse code for both the server and the client within my game flow to make sure both players always stay in sync.</p>
+        <img src='posts/PT/multiplayer_img_1.png'>
+        
+        <p>One of the quirks of combining client and server code like this are multiple methods existing with similar names between the server and client in the same class. For sanity’s sake, each network-related method had a prefix indicating its purpose, such as Networked (both server and client) or Server (server-only). This made it simple to incorporate important server functionality without creating a completely separate flow, saving lots of time.</p>
+        <img src='posts/PT/multiplayer_img_3.png'>
+        <img src='posts/PT/multiplayer_img_4.png'>
+
+        <p>Lastly, I like to set up some handy config settings to make playtesting only my own easier without breaking the multiplayer workflow.</p>
+        <img src='posts/PT/multiplayer_img_2.png'>
+
+    </div>
+
+    <button class='glass collapsible'><h2>Dynamic Card Effects</h2></button>
+    <div class='collapsible-content glass collapsible-hidden'>
+        <p>I dedicated a good chunk of time working on a card effect system to adjust cards in real-time while playing within the editor. My main goals for this system were to to include as much functionality within editor properties and to be able to balance values and effects of cards on the fly. </p>
+        <p>Each card is composed of fields regarding the card’s display, stats, game events it listens to, and custom data properties that can dynamically change the card’s functionality.</p>
+        <p>For example, each data property on the card can be referenced as a string identifier to send a value:</p>
+        <p>Game events can also be referenced on each card to trigger an action when the event happens at certain points in the game.</p>
+        <p>This system offers lots of flexibility by allowing me to create mechanics in code without unnecessary layers of abstraction while still being able to adapt properties within the editor in real-time.</p>
+        <p>I also worked on a robust modifier system for many different types of effects. Each modifier can be categorized as a buff or debuff, has a certain category, a certain operator, and whether it is tracked with turns or a value. </p>
+        <p>For example, the “Add Clean” modifier will add a certain value of clean every time the player cleans, and because it doesn’t have a set amount of uses, it displays its add value in the UI.</p>
+        <p>By tweaking these settings, many types of modifiers can be created, and while small edge cases in which you might want to display both properties on a modifier can happen, this approach covered all of the necessary modifiers I planned to design in the prototype.</p>
+        <p>When adding a modifier to a card, you can provide a number of turns and a value, allowing modifiers to be configured in advance but also flexibly change based on the card’s design.</p>
+        <p>To then calculate the value that each modifier will give when a card is played, I created a few helper functions based on the data selected:</p>
+        <p>This makes iterating on values and game math much easier! With all of the data setup and working, we come to our main card playing function: </p>
+        <p>In general, I was very satisfied with how easy it was to make and iterate on new cards, modifiers, and mechanics and the possibility of tweaking numbers while playing. </p>
+        <p>One aspect I would like to learn about though and improve for future systems is the use of scriptable objects in combination with Unity’s [SerializedProperty] attribute, which would allow me to stray from statically-defined Enums and string definitions for custom properties.</p>
+    </div>
+</div>

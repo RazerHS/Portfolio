@@ -1,0 +1,19 @@
+<div class="content">
+    <p>My role in Teeko was to create various systems and game architecture to help the gameplay programmer and owner of the project be able to more easily and efficiently. One aspect that was especially important was setting up a narrative workflow that could support dialogue across many NPCs, levels, and languages. As a tool creator, I wanted to see if I could create something on my own for this purpose.</p>
+    <p>Many iterations later, the Story Graph became the backbone of Teeko’s efficient and easy-to-use narrative pipeline.</p></p>
+    <button class='glass collapsible'><h2>Story Graph: An In-House Dialogue Tool</h2></button>
+    <div class='collapsible-content glass collapsible-hidden '>
+        <h3>Features</h3>
+        <p>I surveyed the narrative team and collected a feature/usability list to make our in-house more useful for our use case than external solutions. After some more research, the experimental Unity Graph API, which Shader Graph is built upon, had built-in functionality to cover many of the important features, so it was chosen as the basis for my Story Graph.</p>
+        <p>The Story Graph consists of an editor window containing a node graph, a minimap, and a toolbar for renaming, saving, and loading. </p>
+        <p>Each node has a node type (START, NONE, END) which represents where in the story passage you are. The START node has additional settings, such as whether this passage should be wrapped in a letterbox and the name of the passage. Nodes are connected each to continue a passage until it hits an END node.</p>
+        <p>For this project, only linear dialogue was required, so branching functionality was stripped out. This is what a branching passage looked like in previous versions: </p>
+        <p>All nodes also contain their own data which can be added or removed easily, as these fields are drawn using Odin Inspector. Adding additional fields required quite a bit of manual setup in UI toolkit, so to simplify the process, I configured Odin to draw them in ImGUI and then inserted them within an ImGUI container for use in UI toolkit.</p>
+        <p>To animate dialogue text, we use Febucci’s Text Animator, in which previewing text was only possible inside of Text Mesh Pro in the editor. This made it tedious to visualize specific animations of our dialogue lines, so to make this easier, I set up a custom stage that instantiated our dialogue box and inserted any dialogue you hover within the story graph. </p>    
+        <p>By using the mouse, you could stop and play the text’s current animations. Combined with a prefab of our actual dialogue widget, you can get a proper dialogue preview within the story graph:</p>
+        <h3>Reflection</h3>
+        <p>I loved working on this tool because of how much depth and detail I could focus on to make it as useful and time-saving as possible for the narrative team. Not only that, but I also learned a lot about systems built into Unity and how they work on a more granular level. Overall, it was a big success!</p>
+        <p>A big edge the Story Graph has over other dialogue solutions I tried in the past, such as Twine and Articy. Since its data is stored using scriptable objects, using it with source control was extremely straightforward and let us easily keep track of versioning, as well as allowing multiple people to work on different story graphs simultaneously. </p>
+        <p>Future extensions of the Story Graph include a level scripting mode, allowing you to make dialogue impact the game world itself (example here) and localization support.</p>
+    </div>
+</div>

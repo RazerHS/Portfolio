@@ -1,41 +1,44 @@
-<script>
-    import {onMount} from 'svelte';
-
-    onMount(() => {
-        const header = document.querySelector('header');
-
-        window.addEventListener('scroll', () => {
-            //   header.classList.toggle('fade-out-header', window.scrollY == 0);
-            //   header.classList.toggle('fade-in-header', window.scrollY != 0);
-        });
-    });
-</script>
-
 <style>
     header {
-        position: sticky;
         top: 0;
+        position: sticky;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: -3em;
+        padding-top: 1em;
         z-index: 10;
-        height: 4.5em;
-        margin: auto;
-        margin-bottom: 2em;
-        font-family: Lexend;
     }
 
     nav {
-       display: flex; 
-       align-items: center;
-       justify-content: center;
-       gap: 2em;
-       height: 100%;
-       margin: auto;
-       font-size: 1.2em;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        gap: 2em;
+        width: fit-content;
+        padding: 1em 3em;
+        margin: auto;
+        font-size: 1.2em;
+        height: fit-content;
+        font-family: 'Lexend';
+        box-shadow: 0;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0.1px rgb(142, 142, 142) inset;
+        backdrop-filter: blur(32px) saturate(100%);
     }
 
     a {
         overflow: hidden;
         width: auto;
         color: white;
+    }
+
+    .background {
+        width: 100%;
+        background: linear-gradient(110deg, rgba(59,81,223,1) 0%, rgba(86,51,215,1) 9%, rgba(21,138,183,1) 65%, rgba(8,149,177,1) 72%, rgba(43,175,201,1) 80%);        height: 3em;
+        position: absolute;
+        opacity: 0.6;
+        height: 3.5em;
+        filter: blur(32px);
     }
 
     @media (max-width: 768px) {
@@ -57,34 +60,23 @@
     }
 
     @keyframes fadeHeader {
-        0% {
-            background-color: rgba(0, 0, 0, 0);
+        from {
             
         }
-        100% {
-            background-color: rgba(78, 0, 0, 1);
+        to {
+            box-shadow: 0 0 0px 0px rgb(142, 142, 142) inset;
+            
         }
-    }
-
-    .fade-in-header {
-        animation: fadeHeader 1s forwards;
-    }
-
-    .fade-out-header
-     {
-        animation: fadeHeader 2s both reverse;
-     }
-
-    .header-border {
-        border: 3px solid black;
     }
 
 </style>
 
-<header class='glass header-border'>
+<div class="background"></div>
+<header>
     <nav>       
-        <a href='/'>Home</a>
+        <a href='/'>Work</a>
         <a>About</a>
-        <a>Contact</a>
+        <a>Play</a>
+        <a>Blog</a>
     </nav>
 </header>

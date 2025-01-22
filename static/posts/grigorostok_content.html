@@ -1,0 +1,29 @@
+<p>Grigorostok is a cool game.</p>
+
+<button class='glass collapsible'><h2>Dynamic Weather System</h2></button>
+<div class='collapsible-content glass collapsible-hidden'>
+    <p>To carefully craft the ambience for our level, I built a dynamic weather system that can customize various post-processing, weather, and lighting settings from the editor. Since our game operates on a 24h in-game clock system, the config allows the user to specify weather parameters for each hour of the day.</p>
+    <p>Each aspect of the weather had its own lower and upper bounds precalculated and set to already look good for our level. As such, when our designer sets a parameter from [0-1], it gets mapped to the pre-established bounds. This helps avoid artifacts when the system procedurally mixes all the parameters and creates new weather conditions.</p>
+    <p>To prevent the weather from being too static, certain lower-impact properties were handled by chance. Combined with the user-set parameters for each day, the same values can have slight variation in their appearance across different days, which is more akin to real-world weather.</p>
+    <p>To visually map our 24h time with Unity’s AnimationCurve fields, I used Odin Inspector’s progress bar and set its width to be that of the animation curves. This way, the user can move the progress bar and use it as a reference for setting each property at a specified time of day and link it to important narrative beats.</p>
+    <p>I also found excellent references from Ben Cloward to create the ground rain/droplet shader, in which I exposed many of the properties which the weather system controls. It visually ties together rain strength with how many droplets appear on the ground, how many puddles it creates and how long they linger, as well as how many rain particles fall from the sky.</p>
+    <p>Ultimately, our team did not have enough time within the project to implement all designed narrative beats and map them to the most compelling weather conditions. However, I learned a lot about controlling multitudes of different effects and procedurally shaping them to match real-life references and hope to use the system in other cool projects.</p>
+    <p>Next steps include making a visual showcase of the changing weather and smoothing out certain weather changes, such as the rapid and textured disappearing of clouds in HDRP and the sun’s bloom deactivating when behind a cloud.</p>
+</div>
+
+<button class='glass collapsible'><h2>Asset Importer</h2></button>
+<div class='collapsible-content glass collapsible-hidden'>
+    <p>To build our level, we decided to create modular building blocks and have our level designer compose each building himself based on his city layout. While this was a great solution for our small team, it meant that each time we had an iteration of new building assets, we would need to spend a lot of time doing manual importing and setup.</p>
+    <p>To save a significant amount of manual work and reduce human error during this process, I built a tool to take in an .fbx file and a shader and automate the following:</p>
+    <ol>
+        <li>Extract the model's materials.</li>
+        <li>Find the corresponding textures within the same directory by name.</li>
+        <li>Apply the textures to the shader based on the exposed shader properties.</li>
+        <li>Rename the textures using the model name and texture type (correcting potential typos).</li>
+        <li>Remap the materials back into the model.</li>
+    </ol>
+    <p>I also included a debug section to make sure textures and materials were found properly in case something wasn’t working as intended, as well as some config settings depending on the tool’s use case.</p>
+    <p>Using this tool saved us hours and hours of manual labor of dragging textures and materials all over the place - all with just the click of a button! I very much enjoyed digging deeper into Unity and finding solutions for features such as manually extracting the materials from a model (like in the Inspector) and fetching exposed shader properties.</p>
+    <p>Next steps would include automatically replacing each model in its corresponding prefab or game object, but due to time constraints during the project, other tasks were prioritized instead. However, that would be a great next step for integrating the tool into other projects and making its own stand-alone asset.</p>
+    <img src='/igi.png'>
+</div>

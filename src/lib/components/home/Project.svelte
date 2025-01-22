@@ -1,10 +1,10 @@
 <script> 
     import '$lib/styles/style.scss';
 
-    let {name, tools, tags} = $props();
+    let {name, tools, tags, description} = $props();
 </script>
 
-<style>
+<style lang="scss">
     :root {
         --gradient-color: rgb(0, 0, 0);
     }
@@ -97,6 +97,7 @@
         height: auto;
         max-height: 100%;
         max-width: 100%;
+        margin: 0;
     }
 
     .tags-container {
@@ -142,6 +143,11 @@
         align-items: center;
 
         a {
+
+            @media (max-width: 768px) {
+                font-size: 3em;
+            }
+
             font-size: calc(1em + 1vw);
             display: block;
             width: 100%;
@@ -164,8 +170,7 @@
                     {/each}
                 </div>
             </div>
-            <p class='description'> Befiend is a single-player roguelike-adventure mix depicted by the twisted fates of two protagonists from different worlds.
-                I worked on the game’s main architecture, most notably creating our turn-based combat system and an effective way to manage data.
+            <p class='description'> {description} </p>
             <div class='tags-container'>
                 {#each tags as tag}
                     <div class='tag {tag.toLowerCase()}'>
