@@ -40,6 +40,7 @@
         align-items: center;
         transition: all .6s;
         border: 7px solid var(--glass-border-color);
+        position: relative;
     }
 
     .container:hover {
@@ -59,7 +60,9 @@
     }  
 
     .description {
-        padding-bottom: 2em;
+        min-height: 10em;
+        height: fit-content;
+        padding-bottom: 1em;
     }
 
     .title-container {
@@ -105,7 +108,6 @@
         gap: 0.5em 1em;
         flex-shrink: 1;
         flex-wrap: wrap;
-
         height: auto;
     }
 

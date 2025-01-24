@@ -135,6 +135,7 @@
                 font-family: Lexend;
                 font-size: 1.3em;
                 font-weight: 350;
+                line-height: 1.3;
             }
 
             h3 {

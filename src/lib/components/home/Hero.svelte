@@ -113,10 +113,10 @@
         display: flex;
         flex-wrap: wrap;
         position: absolute;
+        gap: 1em;
         bottom: 0;
         left: 0;
-        gap: 1em;
-        width: 15em;
+        width: 12em;
         padding: 2em;
     }
 
@@ -174,13 +174,15 @@
     }
 
     .arrow {
-        font-size: 8em;
         color: white;
-        padding-top: 0.25em;
-        text-shadow: 2px 2px 16px rgb(0, 0, 0);
-        text-shadow: 5px 5px 32px rgb(0, 0, 0);
-        animation: hover 1s infinite;
-        rotate: 45deg;
+        width: 5em;
+        rotate: 30deg;
+        position: absolute;
+        left: 5em;
+        padding-top: 1em;
+        opacity: 0;
+        filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
+        animation: fadeIn 1.5s ease-in-out 1.5s forwards;
     }
 
     .hero-credits {
@@ -194,7 +196,13 @@
         opacity: 0;
         font-weight: 300;
         font-size: 1.2em;
-        animation: fadeIn 1.5s ease-in-out 2s forwards;
+        animation: fadeIn 1.5s ease-in-out 2.3s forwards;
+        filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
+    }
+
+    .placeholder {
+        width: 3em;
+        height: 3em;
     }
 
 </style>
@@ -206,13 +214,17 @@
         <div class='text-container'>
             <h1> Hi, I'm Igor.</h1>
             <h2 class='heading-subtext'> I develop <color class='color1'>systems</color>, <color class='color2'>tools</color>, and <color class='color3'>gameplay</color> for games that inspire me.</h2>
+            <img src='\arrow.png' alt='' class="arrow">
             <div class='contact-container'>
-                <ContactButton src='/github_icon.png' alt='Github' link='https://github.com/RazerHS' fadeInDelay=1.5/>
-                <ContactButton src='/linkedin_icon.png' alt='LinkedIn' link='https://www.linkedin.com/in/igor-kovacevic-04b931239/' fadeInDelay=1.7/>
-                <ContactButton src='/itch_icon.png' alt='Itch' link='https://razerhs.itch.io/' fadeInDelay=1.9/>
-                <!-- <ContactButton src='/email_icon.png' alt='Email' link='mailto:igor.kovacevic550@gmail.com'/> -->
+                <ContactButton src='/github_icon.png' alt='Github' link='https://github.com/RazerHS' text='GitHub' fadeInDelay=1.5/>
+                <ContactButton src='/linkedin_icon.png' alt='LinkedIn' link='https://www.linkedin.com/in/igor-kovacevic-04b931239/' text='LinkedIn' fadeInDelay=1.6/>
+                <span class="placeholder"></span>
+                <ContactButton src='/itch_icon.png' alt='Itch' link='https://razerhs.itch.io/' text='Itch.io' fadeInDelay=1.7/>
+                <ContactButton src='/email_icon.png' alt='Email' link='mailto:igor.kovacevic550@gmail.com' text='Email' fadeInDelay=1.8/>
+                <ContactButton src='/cv_icon.png' alt='CV' link='/Igi_CV.pdf' text='CV' fadeInDelay=1.9/>
             </div>
         </div>
-        <p class='hero-credits'>Art by: @veragram</p>
+        <p class='hero-credits'>Art by: @/manasseh</p>
     </div>
 </div>
+ 

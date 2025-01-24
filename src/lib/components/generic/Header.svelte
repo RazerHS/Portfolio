@@ -36,8 +36,8 @@
         width: 100%;
         background: linear-gradient(110deg, rgba(59,81,223,1) 0%, rgba(86,51,215,1) 9%, rgba(21,138,183,1) 65%, rgba(8,149,177,1) 72%, rgba(43,175,201,1) 80%);        height: 3em;
         position: absolute;
-        opacity: 0.6;
         height: 3.5em;
+        opacity: 0.6;
         filter: blur(32px);
     }
 
