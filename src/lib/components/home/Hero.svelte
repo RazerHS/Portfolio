@@ -7,12 +7,6 @@
 </script>
 
 <style lang='scss'>
-    @media (max-width: 768px) {
-        .hero-main-container {
-            flex-wrap: wrap;
-            align-items: center;
-        }
-    }
 
     @keyframes hover {
         0% {
@@ -65,6 +59,10 @@
         display: flex;
         position: relative;
         overflow: hidden;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 85vh;
     }
 
     .hero-separator {
@@ -82,7 +80,35 @@
         padding: 1em 2em;
         position: relative;
         border-radius: 15px;
-        font-size: 1.5em;
+        font-size: clamp(1.5em, 1em, 2em);
+
+        @media (max-width: 480px) {
+            font-size: calc(1em - 0.5vw);
+        }
+
+        @media (max-width: 768px) {
+            width: 15em;
+            padding: 1em 1.5em;
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            width: 20em;
+        }
+    }
+
+    .bottom-container {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        padding-bottom: 5vh;
+
+        @media (max-width: 768px) {
+            width: 95%;
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            width: 80%;
+        }
     }
 
     .shine {
@@ -112,12 +138,84 @@
     .contact-container {
         display: flex;
         flex-wrap: wrap;
-        position: absolute;
         gap: 1em;
-        bottom: 0;
-        left: 0;
         width: 12em;
-        padding: 2em;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        padding-left: 2em;
+        
+        @media (max-width: 768px) {
+            padding-left: 1.5em;
+        }
+    }
+
+    .hero-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        object-position: center;
+        opacity: 1;
+        mix-blend-mode: lighten;
+        transform: rotateY(180deg);
+    }
+
+    .arrow {
+        position: absolute;
+        color: white;
+        width: 5em;
+        rotate: 30deg;
+        left: 5em;
+        opacity: 0;
+        filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
+        animation: fadeIn 1.5s ease-in-out 1.5s forwards;
+
+        @media (max-width: 768px) {
+            visibility: hidden;
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            
+        }
+    }
+
+    .hero-credits-wrapper {
+        margin: 0;
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-top: 4em;
+
+        @media (max-width: 768px) {
+            padding-top: 2em;
+        }
+    }
+
+    .hero-credits {
+        opacity: 0;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 300;
+        font-size: 1.2em;
+        filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
+        animation: fadeIn 1.5s ease-in-out 2.3s forwards;
+
+        @media (max-width: 480px) {
+            font-size: 0.7em;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 1em;
+        }
+    }
+
+    .placeholder {
+        width: 3em;
+        height: 3em;
+
+        @media (max-width: 768px) {
+            width: 2.5em;
+            height: 2.5em;
+        }
     }
 
     p {
@@ -153,68 +251,17 @@
         animation: textGlow 5s ease-in-out infinite alternate;
     }
 
-    .rounded {
-        position: relative;
-        width: 80%;
-        height: 50em;
-        border-radius: 80px;
-        display: flex;
-        border-radius: 0px 80px 0px 80px;
-    }
-
-    .hero-image {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover; 
-        object-position: center;
-        opacity: 1;
-        mix-blend-mode: lighten;
-        transform: rotateY(180deg);
-    }
-
-    .arrow {
-        color: white;
-        width: 5em;
-        rotate: 30deg;
-        position: absolute;
-        left: 5em;
-        padding-top: 1em;
-        opacity: 0;
-        filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
-        animation: fadeIn 1.5s ease-in-out 1.5s forwards;
-    }
-
-    .hero-credits {
-        display: flex;
-        color: rgba(255, 255, 255, 0.7);
-        height: fit-content;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        padding: 1em;
-        opacity: 0;
-        font-weight: 300;
-        font-size: 1.2em;
-        animation: fadeIn 1.5s ease-in-out 2.3s forwards;
-        filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
-    }
-
-    .placeholder {
-        width: 3em;
-        height: 3em;
-    }
-
 </style>
 
 <div class='hero-main-container' name="about">
     <div class='hero-separator'></div>
     <img class='hero-image' src='/igi2.png' alt='Hero'/>
-    <div class='rounded'> 
         <div class='text-container'>
             <h1> Hi, I'm Igor.</h1>
             <h2 class='heading-subtext'> I develop <color class='color1'>systems</color>, <color class='color2'>tools</color>, and <color class='color3'>gameplay</color> for games that inspire me.</h2>
             <img src='\arrow.png' alt='' class="arrow">
+        </div>
+        <div class='bottom-container'>
             <div class='contact-container'>
                 <ContactButton src='/github_icon.png' alt='Github' link='https://github.com/RazerHS' text='GitHub' fadeInDelay=1.5/>
                 <ContactButton src='/linkedin_icon.png' alt='LinkedIn' link='https://www.linkedin.com/in/igor-kovacevic-04b931239/' text='LinkedIn' fadeInDelay=1.6/>
@@ -223,8 +270,9 @@
                 <ContactButton src='/email_icon.png' alt='Email' link='mailto:igor.kovacevic550@gmail.com' text='Email' fadeInDelay=1.8/>
                 <ContactButton src='/cv_icon.png' alt='CV' link='/Igi_CV.pdf' text='CV' fadeInDelay=1.9/>
             </div>
-        </div>
-        <p class='hero-credits'>Art by: @/manasseh</p>
+            <div class='hero-credits-wrapper'>
+                <p class='hero-credits'>Art by: @/manasseh</p>
+            </div>
     </div>
 </div>
  

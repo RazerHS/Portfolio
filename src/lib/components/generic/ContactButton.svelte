@@ -4,7 +4,7 @@
     let {src, alt, link, invertColors, fadeInDelay, text} = $props();
 </script>
 
-<style>
+<style lang='scss'>
     a {
         scale: 1;
         transition: scale 0.2s ease-in-out;
@@ -13,6 +13,11 @@
         max-height: 3em;
         opacity: 0;
         position: relative;
+
+        @media (max-width: 768px) {
+            max-width: 2.5em;
+            max-height: 2.5em;
+        }
     }
 
     a:hover {

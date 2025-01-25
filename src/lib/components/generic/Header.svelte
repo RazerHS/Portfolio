@@ -10,20 +10,22 @@
     }
 
     nav {
-        display: flex; 
-        align-items: center;
-        justify-content: center;
-        gap: 2em;
-        width: fit-content;
-        padding: 1em 3em;
+        display: flex;
+        justify-content: space-around;
+        padding: 5px;
         margin: auto;
         font-size: 1.2em;
-        height: fit-content;
+        padding: 1em 3em;
         font-family: 'Lexend';
-        box-shadow: 0;
         border-radius: 10px;
+        width: 30%;
         box-shadow: 0 0 10px 0.1px rgb(142, 142, 142) inset;
         backdrop-filter: blur(32px) saturate(100%);
+
+        @media (max-width: 768px)
+        {
+            visibility: hidden;  
+        }
     }
 
     a {
@@ -39,34 +41,6 @@
         height: 3.5em;
         opacity: 0.6;
         filter: blur(32px);
-    }
-
-    @media (max-width: 768px) {
-        header {
-            width: 100%;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 1024px) {
-        header {
-            width: 50%;
-        }
-    }
-
-    @media (min-width: 1025px) {
-        header {
-            width: 30%;
-        }
-    }
-
-    @keyframes fadeHeader {
-        from {
-            
-        }
-        to {
-            box-shadow: 0 0 0px 0px rgb(142, 142, 142) inset;
-            
-        }
     }
 
 </style>
