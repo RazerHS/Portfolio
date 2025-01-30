@@ -31,27 +31,6 @@
         }
     }
 
-    @keyframes shine {
-        0% {
-            background-position: -120%;
-        }
-        10% {
-            background-position: 120%;
-        }
-        100% {
-            background-position: 120%;
-        }
-    }
-
-    @keyframes textGlow {
-        from {
-            text-shadow: 0 0 0px currentColor, 0 0 50px currentColor;
-        }
-        to {
-            text-shadow: 0 0 20px currentColor, 0 0 80px currentColor;
-        }
-    }
-
     .hero-main-container {
         gap: 0em;
         overflow: hidden;
@@ -62,7 +41,7 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-between;
-        height: 85vh;
+        height: 80vh;
     }
 
     .hero-separator {
@@ -82,7 +61,7 @@
         border-radius: 15px;
         font-size: clamp(1.5em, 1em, 2em);
 
-        @media (max-width: 480px) {
+        @media (max-width: 480px) or (max-height: 720px){
             font-size: calc(1em - 0.5vw);
         }
 
@@ -99,32 +78,9 @@
     .bottom-container {
         display: flex;
         justify-content: space-between;
-        width: 80%;
+        width: 95%;
         padding-bottom: 5vh;
-
-        @media (max-width: 768px) {
-            width: 95%;
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) {
-            width: 80%;
-        }
-    }
-
-    .shine {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: linear-gradient(45deg, 
-            rgba(255, 255, 255, 0) 45%, 
-            rgba(255, 255, 255, 0.8) 45%,
-            rgba(255, 255, 255, 0) 55%,
-            rgba(255, 255, 255, 0) 100%
-        );
-        animation: shine 10s infinite;
-        background-size: 200%;
+        font-size: clamp(0.8rem, 3vw, 1.3rem);
     }
 
     .img-container {
@@ -146,6 +102,10 @@
         @media (max-width: 768px) {
             padding-left: 1.5em;
         }
+
+        @media (max-height: 720px) and (min-width: 768px) {
+            font-size: 0.7em;
+        }
     }
 
     .hero-image {
@@ -160,7 +120,7 @@
     }
 
     .arrow {
-        position: absolute;
+        padding-top: 1em;
         color: white;
         width: 5em;
         rotate: 30deg;
@@ -169,8 +129,8 @@
         filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
         animation: fadeIn 1.5s ease-in-out 1.5s forwards;
 
-        @media (max-width: 768px) {
-            visibility: hidden;
+        @media (max-width: 768px) or (max-height: 850px) {
+            display: none;
         }
 
         @media (min-width: 768px) and (max-width: 1024px) {
@@ -183,29 +143,17 @@
         width: fit-content;
         height: 100%;
         display: flex;
-        align-items: center;
-        padding-top: 4em;
-
-        @media (max-width: 768px) {
-            padding-top: 2em;
-        }
+        align-items: flex-end;
     }
 
     .hero-credits {
         opacity: 0;
         color: rgba(255, 255, 255, 0.7);
         font-weight: 300;
-        font-size: 1.2em;
+        font-size: 1em;
         filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
         animation: fadeIn 1.5s ease-in-out 2.3s forwards;
-
-        @media (max-width: 480px) {
-            font-size: 0.7em;
-        }
-
-        @media (max-width: 768px) {
-            font-size: 1em;
-        }
+        margin: 0;
     }
 
     .placeholder {
@@ -271,7 +219,7 @@
                 <ContactButton src='/cv_icon.png' alt='CV' link='/Igi_CV.pdf' text='CV' fadeInDelay=1.9/>
             </div>
             <div class='hero-credits-wrapper'>
-                <p class='hero-credits'>Art by: @/manasseh</p>
+                <p class='hero-credits'>Art by: @manasseh</p>
             </div>
     </div>
 </div>

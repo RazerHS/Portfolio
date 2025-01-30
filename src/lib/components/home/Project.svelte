@@ -10,7 +10,7 @@
     }
 
     p {
-        font-family: Lexend;
+        font-family: 'Lexend';
         font-size: 1.1em;
     }    
 
@@ -36,11 +36,11 @@
     .container {
         padding-bottom: 2em;
         border-radius: 12px;
-        flex-direction: column;
         align-items: center;
         transition: all .6s;
         border: 7px solid var(--glass-border-color);
         position: relative;
+        height: fit-content;
     }
 
     .container:hover {
@@ -53,6 +53,10 @@
         width: 100%;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
+
+        @media (max-width: 480px) {
+            height: 20em;
+        }
     }
 
     .content-container {
@@ -60,9 +64,15 @@
     }  
 
     .description {
-        min-height: 10em;
         height: fit-content;
         padding-bottom: 1em;
+        margin-top: 0.5em;
+        
+        @media (max-width: 768px) {
+            margin-top: 0.25em;
+            padding-bottom: 0.5em;
+            min-height: 0;
+        }
     }
 
     .title-container {
@@ -81,8 +91,7 @@
 
         max-height: 3rem;
         width: 100%;
-        padding: 0.5em;
-        padding-left: 2em;
+        padding: 0.25em 0.1em 0.5em 1em;
     }
 
     img {
@@ -109,6 +118,7 @@
         flex-shrink: 1;
         flex-wrap: wrap;
         height: auto;
+        align-items: center;
     }
 
     .tag {
@@ -145,16 +155,15 @@
         align-items: center;
 
         a {
-
-            @media (max-width: 768px) {
-                font-size: 3em;
-            }
-
-            font-size: calc(1em + 1vw);
+            font-size: 170%;
             display: block;
             width: 100%;
             white-space: nowrap;
             text-overflow: ellipsis;
+
+            @media (max-width: 1024px) {
+                font-size: 155%;
+            }
         }
     }
 </style>

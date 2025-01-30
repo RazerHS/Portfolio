@@ -4,7 +4,7 @@
     import Backdrop from '$lib/components/generic/Backdrop.svelte';
     import { onMount, onDestroy } from 'svelte';
 
-    let {title, featuredImageSrc, timeline, role} = $props();
+    let {title, featuredImageSrc, timeline, role, tools} = $props();
     let {content} = $state('');
 
     let observer;
@@ -62,17 +62,22 @@
             display: flex;
             margin: auto;
             width: 100%;
-            margin:  auto;
             cursor: pointer;
             font-family: 'Londrina Solid';
             font-size: 1.4em;
             justify-content: center;
             align-items: center;
             height: fit-content;
-            border-radius: 20px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
             border: 0;
             box-shadow: 0 0 10px 0.1px rgb(66, 66, 66) inset;
             transition: border-radius 0.5s ease-in-out;
+            transition: box-shadow 0.2s ease-in-out;
+
+            @media (max-width: 768px) {
+                font-size: 1em;
+            }
         }
 
         .collapsible::before {
@@ -82,10 +87,12 @@
             transition: all 0.2s;
         }
 
-        .collapsible:hover::before {
-            transition: all 0.2s;
-            transform: translateX(0.2em);
-            rotate: 90deg;
+        .collapsible:hover {
+
+            @media (min-width: 1024px) {
+                transition: box-shadow 0.1s;
+                box-shadow: 0 0 12px 0.1px var(--accent-color2) inset;
+            }
         }
 
         .collapsible.active::before {
@@ -112,23 +119,42 @@
             margin-bottom: 1em;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
+
+            @media (max-width: 768px) {
+                padding: 0;
+
+                img {
+                    width: 90% !important;
+                    margin: 1.5em auto !important;
+                }
+            }
         }    
 
         .collapsible-hidden {
             border: 0;
             padding-bottom: 0;
-            transition: max-height 0.5s ease-out;
+            transition: max-height 0.2s ease-out;
         }
 
         .content {
+            padding: 0em 5em;
+
+            @media (max-width: 768px) {
+                padding: 0;
+            }
+
             img {
                 width: 80%;
                 display: flex;
-                margin: 0 auto;
                 justify-content: center;
                 border-radius: 10px;
                 box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);
-                margin: 2em auto;        
+                margin: 2em auto;    
+                
+                @media (max-width: 768px) {
+                    width: 100%;
+                    margin: 0;
+                }
             }
 
             p {
@@ -136,6 +162,11 @@
                 font-size: 1.3em;
                 font-weight: 350;
                 line-height: 1.3;
+
+                @media (max-width: 768px) {
+                    font-size: 1em;
+                    padding: 0 1.5em;
+                }
             }
 
             h3 {
@@ -146,7 +177,7 @@
 
     @media (max-width: 768px) {
         .content-container {
-            width: 90%;
+            width: 95%;
         }
     }
 
@@ -182,10 +213,6 @@
         color: rgb(236, 234, 234);
     }
 
-    .content {
-        padding: 0em 5em;
-    }
-
     h1 {
         font-family: 'Londrina Solid';
         color: white;
@@ -193,36 +220,49 @@
         margin: 0.5em auto 1em auto;
         justify-content: center;
         font-size: 5em;
+        transform: translateY(-5px);
+        animation: visibleLoadIn 0.8s 0.1s forwards;
+
+        @media (max-width: 768px) {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+        }
     }
 
     .post-meta {
-        color: rgb(172, 172, 172);
+        color: rgb(199, 192, 192);
         display: flex;
         justify-content: center;
         margin: auto;
-        gap: 10em;
-        width: 80%;
-        margin-bottom: 5em;
-        font-family: Lexend;
-        font-size: 1.3em;
+        gap: 5em;
+        width: 50%;
+        margin-bottom: 3em;
+        font-family: 'Londrina Solid';
+        font-weight: 300;
+        font-size: 1.5em;
+        opacity: 0;
+        animation: loadIn 1s 0.2s forwards;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            width: 90%;
+            margin-bottom: 1em;
+            gap: 0.1em;
+            font-size: 1.3em;
+        }
     }
 
     .post-meta p {
         font-size: 0.9em;
         color: var(--accent-color2);
         opacity: 1;
-        font-weight: 500;
+        font-weight: 350;
     }
 
     .post-meta-category {
         position: relative;
-    }
-
-    .post-meta-category img {
-        width: 1em;
-        height: 1em;
-        box-shadow: 0;
-        position: absolute;
+        padding: 1em;
+        border-radius: 10px;
     }
 
     .featured-image {
@@ -232,7 +272,32 @@
         justify-content: center;
         border-radius: 10px;
         box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);
-        margin: 2em auto; 
+        margin: 2em auto;
+        opacity: 0; 
+        animation: loadIn 1s 0.3s forwards;
+
+        @media (max-width: 768px) {
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+    
+    .tools-container {
+        display: flex;
+        flex-grow: 1;
+        align-items: center; 
+        column-gap: 0.1em;
+        padding-top: 0.3em;
+        height: 4em;
+    }
+
+    .tool-img {
+        overflow: hidden;
+        max-height: 100%;
+        max-width: 100%;
+        margin: 0;
+        width: auto;
+        height: auto;
     }
 
 </style>
@@ -248,6 +313,13 @@
         </div>
         <div class='post-meta-category'>Role
             <p>{role}</p>
+        </div>
+        <div class="post-meta-category"> Created Using:
+            <div class="tools-container">
+                {#each tools as tool}
+                    <img class='tool-img' src={tool.toLowerCase() + "_icon.png"} alt="tool">
+                {/each}
+            </div>
         </div>
     </div>
     <img src="{featuredImageSrc}" alt="Featured" class='featured-image'>

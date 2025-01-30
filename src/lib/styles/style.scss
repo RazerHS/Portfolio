@@ -12,6 +12,35 @@ html {
     }
 }
 
+@keyframes loadIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes visibleLoadIn {
+    from {
+        transform: translateY(-5px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 0px currentColor, 0 0 50px currentColor;
+    }
+    to {
+        text-shadow: 0 0 20px currentColor, 0 0 80px currentColor;
+    }
+}
+
 .glass {
         backdrop-filter: blur(128px) saturate(500%);
         -webkit-backdrop-filter: blur(128px) saturate(500%);
@@ -41,6 +70,11 @@ a:hover {
         position: absolute;
         visibility: hidden;
     }
+
+    .hide-on-desktop {
+        position: relative;
+        visibility: visible;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -48,12 +82,22 @@ a:hover {
         position: absolute;
         visibility: hidden;
     }
+
+    .hide-on-desktop {
+        position: relative;
+        visibility: visible;
+    }
 }
 
 @media (min-width: 1025px) {
     .hide-on-mobile {
-        visibility: visible;
         position: relative;
+        visibility: visible;
+    }
+
+    .hide-on-desktop {
+        position: absolute;
+        visibility: hidden;
     }
 }
 

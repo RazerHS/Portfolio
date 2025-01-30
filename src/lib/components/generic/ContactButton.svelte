@@ -48,8 +48,9 @@
         opacity: 0;
         transition: opacity 0.2s ease-in-out;
         position: absolute;
-        bottom: 75px;
+        bottom: 65px;
         left: 50px;
+        z-index: 5;
     }
 
     a:hover {
