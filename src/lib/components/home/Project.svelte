@@ -41,6 +41,9 @@
         border: 7px solid var(--glass-border-color);
         position: relative;
         height: fit-content;
+        transform: translateY(-10px);
+        opacity: 0;
+        animation: loadIn 0.7s ease-in-out 0.35s forwards;
     }
 
     .container:hover {

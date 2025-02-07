@@ -1,7 +1,0 @@
-<style>
-
-</style>
-
-<div>
-
-</div> 

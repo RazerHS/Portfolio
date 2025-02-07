@@ -23,6 +23,10 @@
     a:hover {
         scale: 1.1;
         transition: scale 0.1s ease-out; 
+
+        @media (max-width: 1024px) {
+            scale: 1;
+        }
     }
 
     img {
@@ -56,6 +60,10 @@
     a:hover {
         .hover-popup {
             opacity: 1;
+
+            @media (max-width: 1024px) {
+                opacity: 0;
+            }
         }
     }
 

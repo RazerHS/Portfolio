@@ -138,13 +138,13 @@
         <div class="nav-mobile-bg"></div>   
         <nav>
             <a href='/'>Work</a>
-            <a>About</a>
+            <a href=''>About</a>
             <a>Play</a>
         </nav>
     </div>   
     <nav class='nav-desktop hide-on-mobile'>
         <a href='/'>Work</a>
-        <a>About</a>
+        <a href=''>About</a>
         <a>Play</a>
     </nav>
     <div class="hamburger hide-on-desktop">

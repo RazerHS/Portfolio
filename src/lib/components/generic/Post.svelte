@@ -58,99 +58,24 @@
 
 <style lang="scss">
     :global {
-        .collapsible {
-            display: flex;
-            margin: auto;
-            width: 100%;
-            cursor: pointer;
-            font-family: 'Londrina Solid';
-            font-size: 1.4em;
-            justify-content: center;
-            align-items: center;
-            height: fit-content;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            border: 0;
-            box-shadow: 0 0 10px 0.1px rgb(66, 66, 66) inset;
-            transition: border-radius 0.5s ease-in-out;
-            transition: box-shadow 0.2s ease-in-out;
-
-            @media (max-width: 768px) {
-                font-size: 1em;
-            }
-        }
-
-        .collapsible::before {
-            content: '➯';
-            padding-right: 0.4em;
-            font-size: 1.5em;
-            transition: all 0.2s;
-        }
-
-        .collapsible:hover {
-
-            @media (min-width: 1024px) {
-                transition: box-shadow 0.1s;
-                box-shadow: 0 0 12px 0.1px var(--accent-color2) inset;
-            }
-        }
-
-        .collapsible.active::before {
-            transition: all 0.2s;
-            transform: translateX(0.2em);
-            rotate: 90deg;
-        }
-
-        .collapsible.active {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            box-shadow: 0 0 10px 0.5px rgb(174, 172, 172) inset;
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        .collapsible-content {
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 1s ease-out;
-            border-radius: 20px;
-            padding: 0em 2em 2em 2em;
-            border: 0;
-            box-shadow: 0 0 10px 0.1px rgb(66, 66, 66) inset;
-            margin-bottom: 1em;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-
-            @media (max-width: 768px) {
-                padding: 0;
-
-                img {
-                    width: 90% !important;
-                    margin: 1.5em auto !important;
-                }
-            }
-        }    
-
-        .collapsible-hidden {
-            border: 0;
-            padding-bottom: 0;
-            transition: max-height 0.2s ease-out;
-        }
-
         .content {
-            padding: 0em 5em;
-
             @media (max-width: 768px) {
                 padding: 0;
             }
 
             img {
-                width: 80%;
+                width: 50%;
                 display: flex;
                 justify-content: center;
                 border-radius: 10px;
                 box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);
                 margin: 2em auto;    
                 
+                @media (min-width: 769px) and (max-width: 1024px) {
+                    font-size: 1.7em;
+                    width: 90%;
+                }
+
                 @media (max-width: 768px) {
                     width: 100%;
                     margin: 0;
@@ -162,34 +87,133 @@
                 font-size: 1.3em;
                 font-weight: 350;
                 line-height: 1.3;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    font-size: 1.7em;
+                    width: 90%;
+                }
 
                 @media (max-width: 768px) {
                     font-size: 1em;
-                    padding: 0 1.5em;
+                    width: 90%;
                 }
             }
 
             h3 {
                 font-family: Lexend;
+                width: 50%;
+                margin: auto;
+                font-size: 1.5em;
+                margin-top: 1em;
             }
-        }
-    }
 
-    @media (max-width: 768px) {
-        .content-container {
-            width: 95%;
-        }
-    }
+            color.color1 {
+                color: var(--accent-color2);
+                animation: textGlow 3s ease-in-out infinite alternate;
+            }
 
-    @media (min-width: 768px) and (max-width: 1024px) {
-        .content-container {
-            width: 80%;
-        }
-    }
+            color.color2 {
+                color: var(--accent-color3);
+                animation: textGlow 4s ease-in-out infinite alternate;
+            }
 
-    @media (min-width: 1025px) {
-        .content-container {
-            width: 50%;
+            color.color3 {
+                color: var(--accent-color1);
+                animation: textGlow 5s ease-in-out infinite alternate;
+            }
+
+            .collapsible {
+                display: flex;
+                cursor: pointer;
+                font-family: 'Londrina Solid';
+                font-size: 1.4em;
+                justify-content: center;
+                align-items: center;
+                height: fit-content;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                box-shadow: 0 0 10px 0.1px rgb(66, 66, 66) inset;
+                transition: border-radius 0.5s ease-in-out, box-shadow 0.2s ease-in-out, width 1s ease-in-out;
+                width: 50%;
+                margin: 1.5em auto 0 auto;
+                border: 0;
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    font-size: 1.7em;
+                    width: 90%;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+
+                @media (max-width: 768px) {
+                    font-size: 1em;
+                    width: 95%;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+            }
+
+            .collapsible::before {
+                content: '➯';
+                padding-right: 0.4em;
+                font-size: 1.5em;
+                transition: all 0.2s;
+            }
+
+            .collapsible:hover {
+                @media (min-width: 1024px) {
+                    transition: border-radius 0.5s ease-in-out, box-shadow 0.1s, width 0.1s ease-in-out;
+                    box-shadow: 0 0 10px 0.1px var(--accent-color2) inset;
+                }
+            }
+
+            .collapsible.active::before {
+                transition: all 0.2s;
+                transform: translateX(0.2em);
+                rotate: 90deg;
+            }
+
+            .collapsible.active:hover {
+                transition: box-shadow 0.1s ease-in-out, width 0.1s ease-in-out;
+                box-shadow: 0 0 10px 0.1px var(--accent-color3) inset;
+            }
+
+            .collapsible.active {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                box-shadow: 0 0 10px 0.1px rgb(174, 172, 172) inset;
+                transition: box-shadow 0.3s ease-in-out, width 0.1s ease-in-out;
+                width: 100%;
+            }
+
+            .collapsible-content {
+                overflow: hidden;
+                border-radius: 20px;
+                border: 0;
+                box-shadow: 0 0 10px 0.1px rgb(66, 66, 66) inset;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                opacity: 1;
+                transition: opacity 0.3s ease-out;
+
+                @media (max-width: 768px) {
+                    padding: 0;
+
+                    img {
+                        width: 90% !important;
+                        margin: 1.5em auto !important;
+                    }
+                }
+            }    
+
+            .collapsible-hidden {
+                opacity: 0;
+                max-height: 0;
+                transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            }
         }
     }
 
@@ -197,7 +221,6 @@
         width: 100%;
         height: 100%;
         margin: auto;
-        box-shadow: 0 0 20px 0.1px rgb(66, 66, 66) inset;
         backdrop-filter: blur(64px) saturate(100%);
         overflow: hidden;
         margin-top: -4.9em;
@@ -206,11 +229,12 @@
 
     .content-container {
         display: flex;
-        margin: auto;
         justify-content: center;
         border-radius: 20px;
         padding-bottom: 2em;
         color: rgb(236, 234, 234);
+        width: 95%;
+        margin: auto;
     }
 
     h1 {
@@ -222,6 +246,12 @@
         font-size: 5em;
         transform: translateY(-5px);
         animation: visibleLoadIn 0.8s 0.1s forwards;
+        text-shadow: 0 0 10px currentColor;
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 7em;
+            margin-bottom: 0.5em;
+        }
 
         @media (max-width: 768px) {
             font-size: 3.5em;
@@ -235,13 +265,19 @@
         justify-content: center;
         margin: auto;
         gap: 5em;
-        width: 50%;
+        width: calc(100% - 35vw);
         margin-bottom: 3em;
         font-family: 'Londrina Solid';
-        font-weight: 300;
-        font-size: 1.5em;
+        font-size: calc(1em + 0.5vw);
         opacity: 0;
         animation: loadIn 1s 0.2s forwards;
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            flex-direction: column;
+            width: 90%;
+            font-size: 2em;
+            gap: 0.5em;
+        }
 
         @media (max-width: 768px) {
             flex-direction: column;
@@ -252,17 +288,23 @@
         }
     }
 
-    .post-meta p {
-        font-size: 0.9em;
-        color: var(--accent-color2);
-        opacity: 1;
-        font-weight: 350;
-    }
-
     .post-meta-category {
         position: relative;
         padding: 1em;
-        border-radius: 10px;
+    }
+
+    .post-meta-category p {
+        font-size: 0.9em;
+        color: var(--accent-color2);
+    }
+
+    .post-meta-category .separator {
+        position: absolute;
+        width: 1.5em;
+        height: 0.07em;
+        color: white;
+        background: white;
+        opacity: 0.4;
     }
 
     .featured-image {
@@ -275,6 +317,10 @@
         margin: 2em auto;
         opacity: 0; 
         animation: loadIn 1s 0.3s forwards;
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            width: 88%;
+        }
 
         @media (max-width: 768px) {
             width: 90%;
@@ -289,17 +335,26 @@
         column-gap: 0.1em;
         padding-top: 0.3em;
         height: 4em;
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            padding-top: 0.7em;
+            height: 2em;
+        }
+
+        @media (max-width: 768px) {
+            padding-top: 0.5em;
+            height: 2.2em;
+        }
     }
 
     .tool-img {
         overflow: hidden;
-        max-height: 100%;
+        max-height: 3em;
         max-width: 100%;
         margin: 0;
         width: auto;
         height: auto;
     }
-
 </style>
 
 <Header />
@@ -308,13 +363,15 @@
     <h1>{title}</h1>
     <div class=post-meta>
         <div class='post-meta-category'> Timeline
-            <!-- <img src="/timeline-icon.png" alt="Timeline"> -->
-            <p>{timeline}</p>
+            <div class='separator'></div>
+            <p class='post-meta-content-text'>{timeline}</p>
         </div>
         <div class='post-meta-category'>Role
-            <p>{role}</p>
+            <div class='separator'></div>
+            <p class='post-meta-content-text'>{role}</p>
         </div>
         <div class="post-meta-category"> Created Using:
+            <div class='separator'></div>
             <div class="tools-container">
                 {#each tools as tool}
                     <img class='tool-img' src={tool.toLowerCase() + "_icon.png"} alt="tool">
@@ -324,7 +381,7 @@
     </div>
     <img src="{featuredImageSrc}" alt="Featured" class='featured-image'>
     <div class='content-container'>
-        <div bind:this={contentContainer} class='content'>
+        <div bind:this={contentContainer}>
             <article>{@html content}</article>
         </div>
     </div>

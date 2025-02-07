@@ -6,12 +6,12 @@
     import Backdrop from '$lib/components/generic/Backdrop.svelte';
 
      const projects = [
-        {
-            name: 'Befiend',
-            tools: ['Unity', 'Odin'],
-            tags: ['Pitching', 'Tools', 'Gameplay', 'Systems'],
-            description: 'A single-player roguelike-adventure mix depicted by the twisted fates of two protagonists from different worlds. I worked on the game’s main architecture, most notably creating our turn-based combat system and an effective way to manage data.' 
-        },
+        // {
+        //     name: 'Befiend',
+        //     tools: ['Unity', 'Odin'],
+        //     tags: ['Pitching', 'Tools', 'Gameplay', 'Systems'],
+        //     description: 'A single-player roguelike-adventure mix depicted by the twisted fates of two protagonists from different worlds. I worked on the game’s main architecture, most notably creating our turn-based combat system and an effective way to manage data.' 
+        // },
         {
             name: 'Teeko',
             tools: ['Unity', 'Odin'],
@@ -57,8 +57,11 @@
         @media (min-width: 1024px) and (max-width: 1300px) {
             width: 75%;
         }
+
+        @media (max-height: 520px) and (max-width: 1024px) {
+            width: 75%;
+        }
     }
-   
 </style>
 
 <Header />

@@ -5,8 +5,9 @@
     let featuredImageSrc = '/grigorostok_featured.png';
     let timeline = "September 2024 - February 2024";
     let role = 'Design, Programming';
+    let tools = ['Unity', 'Odin', 'FMOD'];
 
 </script>
 
-<Post {title} {featuredImageSrc} {timeline} {role}/>
+<Post {title} {featuredImageSrc} {timeline} {role} {tools}/>
 

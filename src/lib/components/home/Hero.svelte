@@ -2,7 +2,6 @@
     import '$lib/styles/style.scss';
     import Button from '$lib/components/generic/Button.svelte';
     import { fade } from 'svelte/transition';
-    import ProgressBar from '../generic/ProgressBar.svelte';
     import ContactButton from '../generic/ContactButton.svelte';
 </script>
 
@@ -42,6 +41,8 @@
         align-items: flex-start;
         justify-content: space-between;
         height: 80vh;
+        transform: translateY(-10px);
+        animation: loadIn 0.7s ease-in-out forwards;
     }
 
     .hero-separator {
@@ -72,6 +73,10 @@
 
         @media (min-width: 768px) and (max-width: 1024px) {
             width: 20em;
+        }
+
+        @media (max-height: 520px) and (max-width: 1024px) {
+            width: 25em;
         }
     }
 
@@ -106,6 +111,10 @@
         @media (max-height: 720px) and (min-width: 768px) {
             font-size: 0.7em;
         }
+        
+        @media (max-height: 520px) and (max-width: 1024px) {
+            font-size: 0.7em;
+        }
     }
 
     .hero-image {
@@ -132,10 +141,6 @@
         @media (max-width: 768px) or (max-height: 850px) {
             display: none;
         }
-
-        @media (min-width: 768px) and (max-width: 1024px) {
-            
-        }
     }
 
     .hero-credits-wrapper {
@@ -154,6 +159,10 @@
         filter: drop-shadow(0 0 1.5rem var(--accent-color1)) drop-shadow(0 0 0.2rem var(--accent-color2));
         animation: fadeIn 1.5s ease-in-out 2.3s forwards;
         margin: 0;
+
+        @media (max-height: 520px) and (max-width: 1024px) {
+            font-size: 0.7em;
+        }
     }
 
     .placeholder {

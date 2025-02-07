@@ -41,6 +41,15 @@ html {
     }
 }
 
+@keyframes textGlowPostHeading {
+    from {
+        text-shadow: 0 0 0px currentColor;
+    }
+    to {
+        text-shadow: 0 0 30px currentColor;
+    }
+}
+
 .glass {
         backdrop-filter: blur(128px) saturate(500%);
         -webkit-backdrop-filter: blur(128px) saturate(500%);

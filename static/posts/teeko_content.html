@@ -1,10 +1,12 @@
 <div class="content">
-    <p>My role in Teeko was to create various systems and game architecture to help the gameplay programmer and owner of the project be able to more easily and efficiently. One aspect that was especially important was setting up a narrative workflow that could support dialogue across many NPCs, levels, and languages. As a tool creator, I wanted to see if I could create something on my own for this purpose.</p>
-    <p>Many iterations later, the Story Graph became the backbone of Teeko’s efficient and easy-to-use narrative pipeline.</p></p>
+    <p>When my best friend Antonio Ercolani says he wants to release a game, you can bet your entire horse farm he will go the extra mile to make something amazing. Antonio is working on releasing <color class='color2'>Teeko</color>, an action-adventure platformer inspired by the Costa Rican ‘La Mascarada’ celebration, to give his country some needed representation in the gaming industry. </p>
+    <p>To speed up programming, Antonio asked me for assistance, which I gladly accepted. While I am working on and off on the project, I come in to set up complex game architecture or useful tools to help the team work faster. One important aspect I contributed to was the <color class='color1'>Story Graph</color>, a narrative design tool that could support dialogue across many NPCs, levels, and languages. </p>
+    <p>First, I surveyed the narrative team and collected a feature/usability list to make the Story Graph more relevant for our workflow than external solutions. After some more research, I found that the experimental Unity Graph API (which ShaderGraph is built upon) had built-in functionality to cover many important features, so it was chosen as the <color class='color3'>basis</color> for the Story Graph.</p>
+    <p>Many iterations later, the Story Graph became the backbone of Teeko’s efficient and easy-to-use narrative pipeline. You can read more about it down below: </p>
+    
     <button class='glass collapsible'><h2>Story Graph: An In-House Dialogue Tool</h2></button>
     <div class='collapsible-content glass collapsible-hidden '>
         <h3>Features</h3>
-        <p>I surveyed the narrative team and collected a feature/usability list to make our in-house more useful for our use case than external solutions. After some more research, the experimental Unity Graph API, which Shader Graph is built upon, had built-in functionality to cover many of the important features, so it was chosen as the basis for my Story Graph.</p>
         <p>The Story Graph consists of an editor window containing a node graph, a minimap, and a toolbar for renaming, saving, and loading. </p>
         <p>Each node has a node type (START, NONE, END) which represents where in the story passage you are. The START node has additional settings, such as whether this passage should be wrapped in a letterbox and the name of the passage. Nodes are connected each to continue a passage until it hits an END node.</p>
         <p>For this project, only linear dialogue was required, so branching functionality was stripped out. This is what a branching passage looked like in previous versions: </p>

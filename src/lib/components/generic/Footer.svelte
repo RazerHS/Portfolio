@@ -21,7 +21,7 @@
         display: flex;
         justify-content: space-between;
         margin: auto;
-        height: 100%;
+        height: 100% - 3em;
         width: calc(100% - 49vw);
 
         @media (max-width: 480px) {
@@ -75,6 +75,7 @@
     .mobile-trademark {
         opacity: 0.5;
         margin-bottom: -1em;
+        margin-top: 0;
         text-align: center;
         padding-top: 1em;
         font-size: 0.9em;
