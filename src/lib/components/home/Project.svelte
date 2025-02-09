@@ -92,7 +92,7 @@
         justify-content: flex-end;
         column-gap: 0.1em;
 
-        max-height: 3rem;
+        max-height: 3em;
         width: 100%;
         padding: 0.25em 0.1em 0.5em 1em;
     }
