@@ -3,8 +3,8 @@
     <p>This inspired me to create a deckbuilder with the goal of making card games accessible to new card game players as my graduation project. The final result was <i><color class='color1'>Polished Trust</color></i>, a roguelike deckbuilder in which two players work together with the same set of cards to clean a luxury hotel. </p>
     <p>During the 4 months of intense work, I researched, concepted, prototyped, and evaluated until the end result was something I was satisfied with. To fill in the gaps, I instilled the help of an artist and composer to create a few assets and the <color class='color2'>jazzy</color> soundtrack. The beta card art is made by yours truly! </p>
     <p>If curiosity is your thing, I detail my thought process for certain aspects of the project below:</p>
-    <button class='glass collapsible'><h2>The Multiplayer Workflow</h2></button>
-    <div class='collapsible-content glass collapsible-hidden'>
+    <button class='glass collapsable'><h2>The Multiplayer Workflow</h2></button>
+    <div class='collapsable-content glass collapsable-hidden'>
         <p>Being the first multiplayer game I developed on my own, I took some advice from my supervisor and used Photon Fusion 2 (PUN2) as my networking solution. PUN2 integrates very nicely into standard Unity workflows and allows for client hosting mode, ideal for a co-op card game. </p>
 
         <p>This made it possible to reuse code for both the server and the client within my game flow to make sure both players always stay in sync.</p>
@@ -19,8 +19,8 @@
 
     </div>
 
-    <button class='glass collapsible'><h2>Dynamic Card Effects</h2></button>
-    <div class='collapsible-content glass collapsible-hidden'>
+    <button class='glass collapsable'><h2>Dynamic Card Effects</h2></button>
+    <div class='collapsable-content glass collapsable-hidden'>
         <p>I dedicated a good chunk of time working on a card effect system to adjust cards in real-time while playing within the editor. My main goals for this system were to to include as much functionality within editor properties and to be able to balance values and effects of cards on the fly. </p>
         <img src='posts/PT/effects_img_1.png'>
         

@@ -17,14 +17,14 @@
     }
 
     function addCollapsibleListeners() {
-        let collapsibles = document.getElementsByClassName("collapsible");
+        let collapsables = document.getElementsByClassName("collapsable");
 
-        for (let i = 0; i < collapsibles.length; i++) {
-            collapsibles[i].addEventListener("click", function() {
+        for (let i = 0; i < collapsables.length; i++) {
+            collapsables[i].addEventListener("click", function() {
                 let content = this.nextElementSibling;
                 
-                collapsibles[i].classList.toggle("active");
-                content.classList.toggle("collapsible-hidden");
+                collapsables[i].classList.toggle("active");
+                content.classList.toggle("collapsable-hidden");
                 content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
             });
         }
@@ -125,7 +125,7 @@
                 animation: textGlow 5s ease-in-out infinite alternate;
             }
 
-            .collapsible {
+            .collapsable {
                 display: flex;
                 cursor: pointer;
                 font-family: 'Londrina Solid';
@@ -156,32 +156,32 @@
                 }
             }
 
-            .collapsible::before {
+            .collapsable::before {
                 content: '➯';
                 padding-right: 0.4em;
                 font-size: 1.5em;
                 transition: all 0.2s;
             }
 
-            .collapsible:hover {
+            .collapsable:hover {
                 @media (min-width: 1024px) {
                     transition: border-radius 0.5s ease-in-out, box-shadow 0.1s, width 0.1s ease-in-out;
                     box-shadow: 0 0 10px 0.1px var(--accent-color2) inset;
                 }
             }
 
-            .collapsible.active::before {
+            .collapsable.active::before {
                 transition: all 0.2s;
                 transform: translateX(0.2em);
                 rotate: 90deg;
             }
 
-            .collapsible.active:hover {
+            .collapsable.active:hover {
                 transition: box-shadow 0.1s ease-in-out, width 0.1s ease-in-out;
                 box-shadow: 0 0 10px 0.1px var(--accent-color3) inset;
             }
 
-            .collapsible.active {
+            .collapsable.active {
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
                 box-shadow: 0 0 10px 0.1px rgb(174, 172, 172) inset;
@@ -189,7 +189,7 @@
                 width: 100%;
             }
 
-            .collapsible-content {
+            .collapsable-content {
                 overflow: hidden;
                 border-radius: 20px;
                 border: 0;
@@ -209,7 +209,7 @@
                 }
             }    
 
-            .collapsible-hidden {
+            .collapsable-hidden {
                 opacity: 0;
                 max-height: 0;
                 transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
