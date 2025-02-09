@@ -87,7 +87,7 @@
         width: 55vw;
         right: 0;
         top: 0;
-        height: fit-content;
+        height: 10em;
         position: absolute;
         border-radius: 20px;
         overflow: hidden;
@@ -102,6 +102,11 @@
             width: 100%;
             font-size: 1.3em;
             font-family: Lexend;
+            z-index: 10;
+        }
+
+        a {
+            text-decoration: underline;
         }
     }
 

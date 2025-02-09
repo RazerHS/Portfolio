@@ -58,11 +58,12 @@
     }
 
     a:hover {
+
         .hover-popup {
             opacity: 1;
 
             @media (max-width: 1024px) {
-                opacity: 0;
+                display: none;
             }
         }
     }

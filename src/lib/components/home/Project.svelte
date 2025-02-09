@@ -166,8 +166,15 @@
 
             @media (max-width: 1024px) {
                 font-size: 155%;
+                text-decoration: underline;
             }
         }
+    }
+
+    .mobile-link a {
+        width: 100%;
+        height: 100%;
+        z-index: 5;
     }
 </style>
 

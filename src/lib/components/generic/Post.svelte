@@ -16,7 +16,7 @@
         content = await response.text();
     }
 
-    function addCollapsibleListeners() {
+    function addCollapsableListeners() {
         let collapsables = document.getElementsByClassName("collapsable");
 
         for (let i = 0; i < collapsables.length; i++) {
@@ -34,7 +34,7 @@
         fetchContent();
 
         observer = new MutationObserver(() => {
-            addCollapsibleListeners();
+            addCollapsableListeners();
         });
 
         if (contentContainer) {
@@ -354,6 +354,14 @@
         margin: 0;
         width: auto;
         height: auto;
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            max-height: 2.5em;
+        }
+
+        @media (max-width: 768px) {
+            max-height: 2.2em;
+        }
     }
 </style>
 
