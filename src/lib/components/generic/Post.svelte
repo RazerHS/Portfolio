@@ -110,6 +110,71 @@
                 margin-top: 1em;
             }
 
+            ul {
+                font-size: 1.2em;
+                font-family: Lexend;
+                font-weight: 350;
+                line-height: 1.3;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+                list-style-type: lower-greek;
+                list-style-position: inside;
+                gap: 1em;
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    font-size: 1.7em;
+                    width: 90%;
+                }
+
+                @media (max-width: 768px) {
+                    font-size: 1em;
+                    width: 90%;
+                }
+            }
+
+            li::marker {
+                font-weight: 500;
+                line-height: 1.3;
+                color: var(--accent-color2);
+                animation: textGlow 3s ease-in-out infinite alternate;
+            }
+
+            video {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                border-radius: 10px;
+                box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);
+                margin: 2em auto;
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    font-size: 1.7em;
+                    width: 90%;
+                }
+
+                @media (max-width: 768px) {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+
+            .collapsable-end-divider {
+                width: 25%;
+                margin: 3em auto 3em auto;
+                background-color: white;
+                height: 0.1em;
+            }
+
+             .post-end-divider {
+                width: 10%;
+                margin: 2em auto 0 auto;
+                background-color: white;
+                height: 0.1em;
+            }
+
+
+
             color.color1 {
                 color: var(--accent-color2);
                 animation: textGlow 3s ease-in-out infinite alternate;
@@ -245,8 +310,7 @@
         justify-content: center;
         font-size: 5em;
         transform: translateY(-5px);
-        animation: visibleLoadIn 0.8s 0.1s forwards;
-        text-shadow: 0 0 10px currentColor;
+        animation: textGlow 5s infinite ease-in-out alternate, visibleLoadIn 0.8s 0.1s forwards;
 
         @media (min-width: 768px) and (max-width: 1024px) {
             font-size: 7em;

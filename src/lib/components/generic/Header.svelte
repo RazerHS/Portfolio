@@ -143,14 +143,14 @@
         <div class="nav-mobile-bg"></div>   
         <nav>
             <a href='/'>Work</a>
-            <a href=''>About</a>
-            <a>Play</a>
+            <a href='/about'>About</a>
+            <a href='' class='disabled'>Play</a>
         </nav>
     </div>   
     <nav class='nav-desktop hide-on-mobile'>
         <a href='/'>Work</a>
-        <a href=''>About</a>
-        <a>Play</a>
+        <a href='/about'>About</a>
+        <a href='' class='disabled'>Play</a>
     </nav>
     <div class="hamburger hide-on-desktop">
         <button onclick={onHamburgerClicked}>{hamburgerIcon}</button>

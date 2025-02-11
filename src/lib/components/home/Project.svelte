@@ -1,7 +1,7 @@
 <script> 
     import '$lib/styles/style.scss';
 
-    let {name, tools, tags, description} = $props();
+    let {name, tools, tags, description, featuredImageSrc} = $props();
 </script>
 
 <style lang="scss">
@@ -180,7 +180,7 @@
 
 <div class='container glass'>
     <div class='img-container'>
-        <img src={name.toLowerCase().replace(' ', '_') + "_featured.png"} alt={name}>
+        <img src={featuredImageSrc} alt={name}>
     </div>
         <div class='content-container'>
             <div class='title-container'>

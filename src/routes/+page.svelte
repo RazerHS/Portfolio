@@ -16,19 +16,22 @@
             name: 'Teeko',
             tools: ['Unity', 'Odin'],
             tags: ['Tools', 'Systems'],
-            description: 'An action-adventure platformer featuring rich storytelling and intense boss battles inspired by the Costa Rican ‘La Mascarada’ celebration. I built a custom node-based dialogue tool to speed up the workflow of narrative designers featuring in-editor text animation previews, fast iteration, and source control compatibility.'
+            description: 'An action-adventure platformer featuring rich storytelling and intense boss battles inspired by the Costa Rican ‘La Mascarada’ celebration. I built a custom node-based dialogue tool to speed up the workflow of narrative designers featuring in-editor text animation previews, fast iteration, and source control compatibility.',
+            featuredImageSrc: 'posts/Teeko/teeko_featured.png'
         },
         {
             name: 'Polished Trust',
             tools: ['Unity', 'Odin'],
             tags: ['Tools', 'Gameplay', 'Systems'],
-            description: 'A networked roguelike deckbuilder for two players working together to clean a luxury hotel. Built as a graduation project using Photon Fusion 2 with the goal of teaching card game mechanics to new players through social gameplay.' 
+            description: 'A networked roguelike deckbuilder for two players working together to clean a luxury hotel. Built as a graduation project using Photon Fusion 2 with the goal of teaching card game mechanics to new players through social gameplay.',
+            featuredImageSrc: 'posts/PT/polished_trust_featured.jpg'
         },
         {
             name: 'Grigorostok',
             tools: ['Unity', 'Odin'],
             tags: ['Tools', 'Gameplay', 'Systems'],
-            description: 'A futuristic murder mystery detective game in which people’s data is protected through the use of decentralized digital wallets. As a solo programmer, the most memorable features I built consisted of a dynamic weather system with corresponding procedural and custom controls for each day of the plot and an asset importer tool to speed up our art integration and level design workflows.' 
+            description: 'A futuristic murder mystery detective game in which people’s data is protected through the use of decentralized digital wallets. As a solo programmer, the most memorable features I built consisted of a dynamic weather system with corresponding procedural and custom controls for each day of the plot and an asset importer tool to speed up our art integration and level design workflows.', 
+            featuredImageSrc: 'posts/Grigorostok/grigorostok_featured.png'
         },
     ]
 </script>

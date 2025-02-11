@@ -7,9 +7,10 @@
         width: 100%;
         height: 20em;
         font-family: Lexend;
-        box-shadow: 0 0 10px 0.1px rgb(142, 142, 142) inset;
+        box-shadow: 0 8px 10px -10px rgb(142, 142, 142) inset;
         backdrop-filter: blur(32px) saturate(100%);
         border: 0;
+        border-radius: 0;
     }
 
     p {
@@ -42,7 +43,6 @@
     }
 
     .colophon {
-
         img {
             width: 1em;
             height: 1em;
