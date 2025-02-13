@@ -21,14 +21,6 @@
         color: white;
         font-family: Lexend;
         font-size: 1.4em;
-
-        @media (max-width: 1024px) {
-            font-size: 1.3em;
-        }
-
-        @media (max-width: 768px) {
-            font-size: 1.1em;
-        }
     }
 
     .hero-container {
@@ -49,21 +41,30 @@
         }
     }
 
-    .main-text-container {
+    .hero-text-container {
         color: white;
         font-family: Lexend;
         width: 50%;
         margin: 1em 2em;
 
-        @media (min-width: 768px) and (max-width: 1024px) 
-        {
-            font-size: 1.7em;
+        @media (min-width: 1025px) {
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        @media (max-width: 1024px) and (min-width: 768px) {
+                width: 90%;
+            }
+
+        @media (max-width: 768px) {
             width: 90%;
         }
 
-        @media (max-width: 768px) {
-            font-size: 1em;
-            width: 90%;
+        p {
+            @media (min-width: 1025px) {
+                padding-top: 0;
+                margin-top: 0
+            }
         }
     }
 
@@ -102,7 +103,7 @@
         }
     }
 
-    .content {
+    .main-content {
         width: 50%;
         margin: auto;
 
@@ -177,6 +178,11 @@
         gap: 2em;
         animation: loadIn 1s 0.5s forwards;
         margin-bottom: 4em;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 2em;
+            margin-top: 0em;
+        }
     }
 
     .contact-container {
@@ -257,7 +263,7 @@
         <div class="igi-container">
             <img src="/igor.jpg" alt="">
         </div>
-        <div class="main-text-container">
+        <div class="hero-text-container">
             <p>I’m a Serbian game developer based in Groningen, Netherlands. </p>
             <p>During my studies, I made all kinds of games and prototypes, eventually leading me to discover a painterly interest in <color class='color1'>tools</color>. I grew to love synthesizing workflows and using my creativity to sharpen the work of my team. Along the way, I found that the journey of creation and learning are just as significant as any final product.</p>
             <p>I am currently looking for <color class='color2'>new opportunities</color>, so if you like what I do, let’s chat!</p>
@@ -268,9 +274,9 @@
             </div>
         </div>
     </div>
-    <div class="content">
+    <div class="main-content">
+        <h3>Experience</h3>
         <div class="timeline">
-            <h3>Experience</h3>
             <TimelineElement title='Teeko (Side Project)' role ='Tools & Systems Programmer' startDate='April &#39;24' endDate='Present' sideProject=true  logo='/teeko_logo.png'/>
             <TimelineElement title='Linx Interactive' role ='Graduation Intern' startDate='Feb &#39;24' endDate='July &#39;24' logo='/linx_logo.png'/>
             <TimelineElement title='Linx Interactive' role ='Programming Intern' startDate='Feb &#39;23' endDate='July &#39;23' logo='/linx_logo.png'/>

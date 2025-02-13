@@ -7,6 +7,7 @@
     <p>During this project, I tried to push my creative and technical bounds to see what I was capable of creating. Read about some of these endeavors below: </p>    
     <button class='glass collapsable'><h2>Dynamic Weather System</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
+        <h3>Finding the Balance</h3>
         <p>To carefully craft the ambience for our level, I built a dynamic weather system that can customize various post-processing, weather, and lighting settings from the editor. Since our game operates on a 24h in-game clock system, the config allows the user to specify weather parameters for each hour of the day.</p>
         <img src='posts/Grigorostok/weather_img_1.png'>
         <img src='posts/Grigorostok/weather_img_8.png'>
@@ -39,6 +40,7 @@
     ChangeWeatherForRandomParameters(percentage, windStrength);
 }       </code></pre>
 
+        <h3>Droplets Galore</h3>
         <p>To prevent the weather from being too static, certain lower-impact properties were handled by chance. Combined with the user-set parameters for each day, the same values can have slight variation in their appearance across different days, which is more akin to real-world weather.</p>
         <img src='posts/Grigorostok/weather_img_3.png'>
         
@@ -76,6 +78,7 @@
         <img src='posts/Grigorostok/weather_img_9.png'>
         <img src='posts/Grigorostok/weather_img_10.png'>
     
+        <h3>Final Thoughts</h3>
         <p>Ultimately, our team did not have enough time within the project to implement all designed narrative beats and map them to the most compelling weather conditions. However, I learned a lot about controlling multitudes of different effects and procedurally shaping them to match real-life references and hope to use the system in other cool projects.</p>
         <p>Next steps include making a visual showcase of the changing weather and smoothing out certain weather changes, such as the rapid and textured disappearing of clouds in HDRP and the sun’s bloom deactivating when behind a cloud.</p>
     
@@ -84,6 +87,7 @@
 
     <button class='glass collapsable'><h2>Asset Importer</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
+        <h3>Modural Design</h3>
         <p>To build our level, we decided to create modular building blocks and have our level designer compose each building himself based on his city layout. While this was a great solution for our small team, it meant that each time we had an iteration of new building assets, we would need to spend a lot of time doing manual importing and setup.</p>
         <img src='posts/Grigorostok/importer_img_3.png'>
         <img src='posts/Grigorostok/importer_img_1.png'>
@@ -100,7 +104,9 @@
 
         <p>I also included a debug section to make sure textures and materials were found properly in case something wasn’t working as intended, as well as some config settings depending on the tool’s use case.</p>
         <img src='posts/Grigorostok/importer_img_2.png'>
-
+        
+        <h3>A Time Save Hack</h3>
+      
         <p>Using this tool saved us hours and hours of manual labor of dragging textures and materials all over the place - all with just the click of a button! I very much enjoyed digging deeper into Unity and finding solutions for features such as manually extracting the materials from a model (like in the Inspector) and fetching exposed shader properties.</p>
     
         <pre><code class="cs">private List&lt;Material&gt; ExtractMaterials(string modelPath)

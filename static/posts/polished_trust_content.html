@@ -6,9 +6,10 @@
     <p>During the 4 months of intense work, I researched, concepted, prototyped, and evaluated until the end result was something I was satisfied with. To fill in the gaps, I instilled the help of an artist and composer to create a few assets and the <color class='color2'>jazzy</color> soundtrack. The beta card art is made by yours truly! </p>
     <video src='posts/PT/polished_trust_gameplay.mp4' controls loop='true' autoplay='true'></video>      
 
-    <p>If curiosity is your thing, I detail my thought process for certain aspects of the project below:</p>
+    <p>If code is your thing, I detail my thought process for certain aspects of the project below:</p>
     <button class='glass collapsable'><h2>The Multiplayer Workflow</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
+        <h3>PUN2 - Perks and Quirks</h3>
         <p>Being the first multiplayer game I developed on my own, I took some advice from my supervisor and used Photon Fusion 2 (PUN2) as my networking solution. PUN2 integrates very nicely into standard Unity workflows and allows for client hosting mode, ideal for a co-op card game. </p>
         <p>This made it possible to reuse code for both the server and the client within my game flow to make sure both players always stay in sync.</p>
         
@@ -66,6 +67,7 @@ private void RPC_TransformIntoTemporaryCard(Card card, int id)
 
     <button class='glass collapsable'><h2>Dynamic Card Effects</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
+        <h3>Editing the Editor</h3>
         <p>I dedicated a good chunk of time working on a card effect system to adjust cards in real-time while playing within the editor. My main goals for this system were to to include as much functionality within editor properties and to be able to balance values and effects of cards on the fly. </p>
         <img src='posts/PT/effects_img_1.png'>
         
@@ -102,7 +104,7 @@ private void RPC_TransformIntoTemporaryCard(Card card, int id)
         <p>This system offers lots of flexibility by allowing me to create mechanics in code without unnecessary layers of abstraction while still being able to adapt properties within the editor in real-time.</p>
         <p>I also worked on a robust modifier system for many different types of effects. Each modifier can be categorized as a buff or debuff, has a certain category, a certain operator, and whether it is tracked with turns or a value. </p>
         
-        <h3>Modifiers</h3>
+        <h3>Modifying Modifiers</h3>
         <img src='posts/PT/effects_img_4.png'>
         
         <p>For example, the “Add Clean” modifier will add a certain value of clean every time the player cleans, and because it doesn’t have a set amount of uses, it displays its add value in the UI.</p>
@@ -183,7 +185,7 @@ private void RPC_TransformIntoTemporaryCard(Card card, int id)
 
     serverGameEventManager.InvokeGameEvent(GameEventType.OnCardResolved, card, player);
 }       </code></pre>
-
+        <h3>Final Thoughts</h3>
         <p>In general, I was very satisfied with how easy it was to make and iterate on new cards, modifiers, and mechanics and the possibility of tweaking numbers while playing. </p>
         <p>One aspect I would like to learn about though and improve for future systems is the use of scriptable objects in combination with Unity’s [SerializedProperty] attribute, which would allow me to stray from statically-defined Enums and string definitions for custom properties.</p>
     

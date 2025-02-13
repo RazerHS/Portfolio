@@ -1,15 +1,16 @@
 <div class="content">
     <p>When my best friend Antonio Ercolani says he wants to release a game, you can bet your entire horse farm he will go the extra mile to make something amazing. Antonio is working on releasing <color class='color2'>Teeko</color>, an action-adventure platformer inspired by the Costa Rican ‘La Mascarada’ celebration, to give his country some needed representation in the gaming industry. </p>
-    <img src='posts/Teeko/antonio.jpg'>
+    <!-- <img src='posts/Teeko/antonio.jpg'> -->
     <img src='posts/Teeko/teeko_gameplay.gif'>
     
     <p>To speed up programming, Antonio asked me for assistance, which I gladly accepted. While I am working on and off on the project, I come in to set up complex game architecture or useful tools to help the team work faster. One important aspect I contributed to was the <color class='color1'>Story Graph</color>, a narrative design tool that could support dialogue across many NPCs, levels, and languages. </p>
-    <p>I surveyed the narrative team and collected a feature/usability list to make the Story Graph more relevant for our workflow than external solutions. After some more research, I found that the experimental Unity Graph API (which ShaderGraph is built upon) had built-in functionality to cover many important features, so it was chosen as the <color class='color3'>basis</color> for the Story Graph.</p>
     <p>Many iterations later, the Story Graph became the backbone of Teeko’s efficient and easy-to-use narrative pipeline. You can read more about it down below: </p>
     
-    <button class='glass collapsable'><h2>Story Graph: An In-House Dialogue Tool</h2></button>
+    <button class='glass collapsable'><h2>The Story Graph</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
-        <h3>Features</h3>
+        <p>Prior to development, I surveyed the narrative team and collected a feature/usability list to make the Story Graph more relevant for our workflow than external solutions. After some more research, I found that the experimental Unity Graph API (which ShaderGraph is built upon) had built-in functionality to cover many important features, so it was chosen as the <color class='color3'>basis</color> for the Story Graph.</p>
+        
+        <h3>So What Can It Do?</h3>
         <p>The Story Graph consists of an editor window containing a node graph, a minimap, and a toolbar for renaming, saving, and loading. </p>
         <img src='posts/Teeko/storygraph_img_1.png'>
 
@@ -41,6 +42,7 @@ public class DialogueNodeData
 
 ...     </code></pre>
 
+        <h3>Pretty Animation Previews</h3>
         <p>To animate dialogue text, we use Febucci’s Text Animator, in which previewing text was only possible inside of Text Mesh Pro in the editor. This made it tedious to visualize specific animations of our dialogue lines, so to make this easier, I set up a custom stage that instantiated our dialogue box and inserted any dialogue you hover within the story graph. </p>    
         <img src='posts/Teeko/storygraph_img_6.gif'>
 

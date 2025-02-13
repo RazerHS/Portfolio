@@ -77,7 +77,7 @@
 </script>
 
 <style lang="scss">
-    :global {
+    :global{
         .content {
             
             @media (max-width: 768px) {
@@ -127,8 +127,19 @@
                 font-family: Lexend;
                 width: 50%;
                 margin: auto;
-                font-size: 1.5em;
+                font-size: 2em;
                 margin-top: 1em;
+                animation: textGlow 5s infinite ease-in-out alternate;
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    font-size: 3em;
+                    width: 90%;
+                }
+
+                @media (max-width: 768px) {
+                    font-size: 1.7em;
+                    width: 90%;
+                }
             }
 
             ul {
