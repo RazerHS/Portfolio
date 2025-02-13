@@ -105,7 +105,7 @@
         <div class='footer-column'> 
             <h3> Elsewhere </h3> 
             <a href='https://github.com/RazerHS' target='_blank'> GitHub </a>
-            <a href='/Igi_CV.pdf' target="_blank"> CV </a>
+            <a href='/CV - Igor Kovacevic.pdf' target="_blank"> CV </a>
             <a href='https://razerhs.itch.io' target='_blank'> Itch.io </a>
             <a href='https://www.linkedin.com/in/igor-kovacevic-04b931239/' target='_blank'> LinkedIn </a>
         </div>

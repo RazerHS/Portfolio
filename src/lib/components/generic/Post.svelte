@@ -3,6 +3,8 @@
     import Footer from '$lib/components/generic/Footer.svelte';
     import Backdrop from '$lib/components/generic/Backdrop.svelte';
     import { onMount, onDestroy } from 'svelte';
+    import hljs from 'highlight.js';
+    import 'highlight.js/styles/atom-one-dark.css';
 
     let {title, featuredImageSrc, timeline, role, tools} = $props();
     let {content} = $state('');
@@ -20,14 +22,32 @@
         let collapsables = document.getElementsByClassName("collapsable");
 
         for (let i = 0; i < collapsables.length; i++) {
-            collapsables[i].addEventListener("click", function() {
-                let content = this.nextElementSibling;
-                
-                collapsables[i].classList.toggle("active");
-                content.classList.toggle("collapsable-hidden");
-                content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
-            });
+            collapsables[i].removeEventListener("click", toggleCollapsable);
+            collapsables[i].addEventListener("click", toggleCollapsable);
         }
+    }
+
+    function toggleCollapsable(event) {
+        let collapsable = event.currentTarget;
+        let content = collapsable.nextElementSibling;
+
+        collapsable.classList.toggle("active");
+        content.classList.toggle("collapsable-hidden");
+
+        let codeBlocks = content.getElementsByTagName("code");
+
+        Array.from(codeBlocks).forEach((block) => {
+            if (block.dataset.highlighted) {
+                return;
+            }
+
+            hljs.highlightElement(block);
+            block.dataset.highlighted = true;
+        });
+
+        let maxHeight = content.scrollHeight + "px";
+
+        content.style.maxHeight = content.style.maxHeight ? null : maxHeight;
     }
 
     onMount(() => {
@@ -59,6 +79,7 @@
 <style lang="scss">
     :global {
         .content {
+            
             @media (max-width: 768px) {
                 padding: 0;
             }
@@ -157,6 +178,28 @@
                     width: 100%;
                     margin: 0;
                 }
+            }
+
+            pre {
+                margin: 2em auto;
+                box-sizing: border-box;
+                max-width: 48vw;
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    max-width: 90vw;
+                }
+
+                @media (max-width: 768px) {
+                    max-width: 90vw;
+                }
+            }
+
+            code {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);
             }
 
             .collapsable-end-divider {

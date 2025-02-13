@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content"> 
     <p>I love card games. A <b>lot</b>. I also really like spending time with my friends, some of whom are of course not card game players. Trying to play card games with those friends - despite every inch of me trying to will into existence - naturally ends in frustration for both parties because the difficulty curve of card games for new players is a vast <color class='color3'>abyss</color>.</p>
     <p>This inspired me to create a deckbuilder with the goal of making card games accessible to new card game players as my graduation project. The final result was <i><color class='color1'>Polished Trust</color></i>, a roguelike deckbuilder in which two players work together with the same set of cards to clean a luxury hotel. </p>
     <img src='posts/PT/polished_trust_short_gameplay.gif'>
@@ -10,13 +10,53 @@
     <button class='glass collapsable'><h2>The Multiplayer Workflow</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
         <p>Being the first multiplayer game I developed on my own, I took some advice from my supervisor and used Photon Fusion 2 (PUN2) as my networking solution. PUN2 integrates very nicely into standard Unity workflows and allows for client hosting mode, ideal for a co-op card game. </p>
-
         <p>This made it possible to reuse code for both the server and the client within my game flow to make sure both players always stay in sync.</p>
-        <img src='posts/PT/multiplayer_img_1.png'>
+        
+        <pre><code class="cs">public class AwaitingPlayersState : State
+{
+    [Inject] private NetworkManager networkManager;
+
+    protected override void OnEnter()
+    {
+        if (networkManager.Runner.IsClient)
+        {
+            owningStateMachine.ToNextState();
+            return;
+        }
+
+        if (!SettingsConfig.Instance.WaitForSecondPlayerToStartGame)
+        {
+            owningStateMachine.ToNextState();
+            return;
+        }
+
+        networkManager.Callbacks.PlayerJoinedEvent += OnPlayerJoined;
+    }
+}</code></pre>
         
         <p>One of the quirks of combining client and server code like this are multiple methods existing with similar names between the server and client in the same class. For sanity’s sake, each network-related method had a prefix indicating its purpose, such as Networked (both server and client) or Server (server-only). This made it simple to incorporate important server functionality without creating a completely separate flow, saving lots of time.</p>
-        <img src='posts/PT/multiplayer_img_3.png'>
-        <img src='posts/PT/multiplayer_img_4.png'>
+        <pre><code class="cs">private void NetworkOnBeatCombat()
+{
+    if (networkManager.Runner.IsServer)
+    {
+        combatController.CurrentEnemy.Effect.ServerOnEndCombatEffect();
+        combatController.ServerDestroyCurrentEnemy();
+
+        serverRunManager.CurrentDeck.ServerDisposeCurrentCombatDeck();
+    }
+
+    Helper.Delay(combatController.CombatEndDiscardHandDelay, () =>
+    {
+        combatController.HandLayoutGroup.DiscardAllCards(combatController.DiscardPoint);
+    });
+    
+...     </code></pre>
+
+        <pre><code>[Rpc]
+private void RPC_TransformIntoTemporaryCard(Card card, int id)
+{
+    card.TransformIntoTemporaryCard(id);
+}       </code></pre>
 
         <p>Lastly, I like to set up some handy config settings to make playtesting only my own easier without breaking the multiplayer workflow.</p>
         <img src='posts/PT/multiplayer_img_2.png'>
@@ -31,10 +71,33 @@
         
         <p>Each card is composed of fields regarding the card’s display, stats, game events it listens to, and custom data properties that can dynamically change the card’s functionality.</p>
         <p>For example, each data property on the card can be referenced as a string identifier to send a value:</p>
-        <img src='posts/PT/effects_img_2.png'>
         
+        <pre><code class='cs'>protected override void OnApplyEffect(PlayerTarget player = PlayerTarget.Default)
+{
+    for (int i = 0; i < GetPropertyValue<int>("amount"); i++)
+    {
+        ServerEffectResolver.ApplyClean(GetPropertyValue<int>("clean"), player);
+    }
+}       </code></pre>
+
         <p>Game events can also be referenced on each card to trigger an action when the event happens at certain points in the game.</p>
-        <img src='posts/PT/effects_img_3.png'>
+        
+        <pre><code class="cs">public override void OnGameEvent(GameEventType gameEventType, params object[] args)
+{
+    switch (gameEventType)
+    {
+        case GameEventType.OnCardResolved:
+        {
+            Card cardToRetrigger = (Card)args[0];
+            cardsToRetrigger.Add(cardToRetrigger);
+            break;
+        }
+
+        case GameEventType.OnTurnEnded:
+            cardsToRetrigger.Clear();
+            break;
+    }
+}       </code></pre>
         
         <p>This system offers lots of flexibility by allowing me to create mechanics in code without unnecessary layers of abstraction while still being able to adapt properties within the editor in real-time.</p>
         <p>I also worked on a robust modifier system for many different types of effects. Each modifier can be categorized as a buff or debuff, has a certain category, a certain operator, and whether it is tracked with turns or a value. </p>
@@ -48,12 +111,78 @@
         <img src='posts/PT/effects_img_5.png'>
         
         <p>To then calculate the value that each modifier will give when a card is played, I created a few helper functions based on the data selected:</p>
-        <img src='posts/PT/effects_img_6.png'>
-        <img src='posts/PT/effects_img_7.png'>
+        
+        <pre><code class="cs">private int CalculateNewValueWithModifier(int value, ModifierCategory category, PlayerTarget playerOwner = PlayerTarget.All)
+{
+    List<Modifier> modifiersToRemoveTurnFrom = new();
+
+    foreach (Modifier modifier in combatController.PlayerModifiers)
+    {
+        if (modifier.Category != category)
+        {
+            continue;
+        }
+
+        if (modifier.PlayerOwner != PlayerTarget.All)
+        {
+            if (modifier.PlayerOwner != playerOwner)
+            {
+                continue;
+            }
+        }
+
+        value = modifier.CalculateNewValue(value);
+
+        ...
+    }
+
+    ...
+
+    combatController.ServerUpdateAllModifierDisplays();
+
+    return value;
+}       </code></pre>
+        
+        <pre><code class="cs">public int CalculateNewValue(int startingValue)
+{
+    return modifierOperator switch
+    {
+        ModifierOperator.Add => startingValue + value,
+        ModifierOperator.Subtract => startingValue - value,
+        ModifierOperator.Set => value,
+        ModifierOperator.Mul => startingValue * value,
+        ModifierOperator.Divide => startingValue / value,
+        _ => startingValue
+    };
+}       </code></pre>
         
         <p>This makes iterating on values and game math much easier! With all of the data setup and working, we come to our main card playing function: </p>
-        <img src='posts/PT/effects_img_8.png'>
-        <img src='posts/PT/effects_img_9.png'>
+        
+        <pre><code class="cs">public void ServerApplyEffect(PlayerTarget player, bool isPlayed = true)
+{
+    if (isPlayed)
+    {
+        ServerEffectResolver.LoseEnergyForCardCost(card.Data.Cost, player);
+    }
+
+    OnApplyEffect(player);
+
+    if (!isPlayed)
+    {
+        return;
+    }
+
+    ServerEffectResolver.OnPlayedCard(card, player);
+
+    EffectResolvedEvent?.Invoke(card);
+}       </code></pre>
+        
+        <pre><code class="cs">public void OnPlayedCard(Card card, PlayerTarget player)
+{
+    cardHistory.Add(new ResolvedCard(card, player));
+
+    serverGameEventManager.InvokeGameEvent(GameEventType.OnCardResolved, card, player);
+}       </code></pre>
 
         <p>In general, I was very satisfied with how easy it was to make and iterate on new cards, modifiers, and mechanics and the possibility of tweaking numbers while playing. </p>
         <p>One aspect I would like to learn about though and improve for future systems is the use of scriptable objects in combination with Unity’s [SerializedProperty] attribute, which would allow me to stray from statically-defined Enums and string definitions for custom properties.</p>

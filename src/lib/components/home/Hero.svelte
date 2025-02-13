@@ -225,7 +225,7 @@
                 <span class="placeholder"></span>
                 <ContactButton src='/itch_icon.png' alt='Itch' link='https://razerhs.itch.io/' text='Itch.io' fadeInDelay=1.7/>
                 <ContactButton src='/email_icon.png' alt='Email' link='mailto:igor.kovacevic550@gmail.com' text='Email' fadeInDelay=1.8/>
-                <ContactButton src='/cv_icon.png' alt='CV' link='/Igi_CV.pdf' text='CV' fadeInDelay=1.9/>
+                <ContactButton src='/cv_icon.png' alt='CV' link='/CV - Igor Kovacevic.pdf' text='CV' fadeInDelay=1.9/>
             </div>
             <div class='hero-credits-wrapper'>
                 <p class='hero-credits'>Art by: @manasseh</p>

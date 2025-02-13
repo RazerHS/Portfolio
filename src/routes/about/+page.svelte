@@ -264,7 +264,7 @@
             <div class='contact-container'>
                 <ContactButton src='/linkedin_icon.png' alt='LinkedIn' link='https://www.linkedin.com/in/igor-kovacevic-04b931239/' text='LinkedIn' fadeInDelay=0.7/>
                 <ContactButton src='/email_icon.png' alt='Email' link='mailto:igor.kovacevic550@gmail.com' text='Email' fadeInDelay=0.8/>
-                <ContactButton src='/cv_icon.png' alt='CV' link='/Igi_CV.pdf' text='CV' fadeInDelay=0.9/>
+                <ContactButton src='/cv_icon.png' alt='CV' link='/CV - Igor Kovacevic.pdf' text='CV' fadeInDelay=0.9/>
             </div>
         </div>
     </div>
@@ -274,7 +274,7 @@
             <TimelineElement title='Teeko (Side Project)' role ='Tools & Systems Programmer' startDate='April &#39;24' endDate='Present' sideProject=true  logo='/teeko_logo.png'/>
             <TimelineElement title='Linx Interactive' role ='Graduation Intern' startDate='Feb &#39;24' endDate='July &#39;24' logo='/linx_logo.png'/>
             <TimelineElement title='Linx Interactive' role ='Programming Intern' startDate='Feb &#39;23' endDate='July &#39;23' logo='/linx_logo.png'/>
-            <TimelineElement title='Unsealed Studios (Side Project)' role ='Lead Programmer' startDate='Sep &#39;22' endDate='July &#39;23' sideProject=true logo='/unsealed_logo.png'/>
+            <TimelineElement title='Unsealed Studios (Side Project)' role ='Lead Programmer' startDate='Sep &#39;22' endDate='Aug &#39;23' sideProject=true logo='/unsealed_logo.png'/>
         </div>
         <div class="text-container">
             <h3>Lore</h3>

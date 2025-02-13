@@ -13,11 +13,59 @@
 
         <p>Each aspect of the weather had its own lower and upper bounds precalculated and set to already look good for our level. As such, when our designer sets a parameter from [0-1], it gets mapped to the pre-established bounds. This helps avoid artifacts when the system procedurally mixes all the parameters and creates new weather conditions.</p>
         <img src='posts/Grigorostok/weather_img_2.png'>
-        <img src='posts/Grigorostok/weather_img_13.png'>
+        
+        <pre><code class="cs">private void SetCurrentEvaluatedWeatherDataByDay(int day, float percentage)
+{
+    ...
+
+    float rainStrength = sceneConfig.WeatherDataList[index].EvaluateRainStrength(percentage);
+
+    float newExposure = Mathf.Lerp(sceneConfig.NighttimeExposure, sceneConfig.DaytimeExposure, CustomExposureRemap(sunController.CurrentSunRotation, sceneConfig.ExposureMinimumSunRotationAngle, sceneConfig.ExposureMaximumSunRotationAngle));
+
+    SetExposure(newExposure);
+    SetGlobalWindSpeed(Mathf.Lerp(sceneConfig.WindSpeedBounds.x, sceneConfig.WindSpeedBounds.y, windStrength));
+
+    SetFog(Mathf.Lerp(sceneConfig.FogAttenuationDistanceBounds .x, sceneConfig.FogAttenuationDistanceBounds.y, 1 - fogStrength));
+    SetRainStrength(rainStrength);
+    SetGroundRainDropSpeed(Mathf.Lerp(sceneConfig.RainDropSpeedBounds.x, sceneConfig.RainDropSpeedBounds.y, rainStrength));
+
+    CalculateWetness(rainStrength, percentage);
+    SetWetness(wetness);
+
+   ...
+
+    SetRainParticleEmission(rainStrength);
+
+    ChangeWeatherForRandomParameters(percentage, windStrength);
+}       </code></pre>
 
         <p>To prevent the weather from being too static, certain lower-impact properties were handled by chance. Combined with the user-set parameters for each day, the same values can have slight variation in their appearance across different days, which is more akin to real-world weather.</p>
         <img src='posts/Grigorostok/weather_img_3.png'>
-        <img src='posts/Grigorostok/weather_img_12.png'>
+        
+        <pre><code class="cs">private void ChangeWeatherForRandomParameters(float percentage, float windStrength)
+{
+    if (randomWeatherParameters == null)
+    {
+        CalculateNewRandomWeatherParameters();
+        CalculateNewTimeToChangeWeatherParameters(percentage);
+    }
+
+    float adjustedCurrentTimePercentage = CalculateAdjustedCurrentTimePercentage(percentage, timeUntilNextWeatherChange);
+    float percentageUntilParametersFullyChanged = Mathf.InverseLerp(startTimeOfCurrentWeatherChange, timeUntilNextWeatherChange, adjustedCurrentTimePercentage);
+
+    ...  
+
+    rainZoneManager.SetRainParticleRotation(windDirection, windStrength, sceneConfig.MaximumRainTiltAngle);
+
+    if (percentageUntilParametersFullyChanged < 1f)
+    {
+        return;
+    }
+
+    CalculateNewRandomWeatherParameters();
+    CalculateNewTimeToChangeWeatherParameters(percentage);
+}       </code></pre>
+
 
         <p>To visually map our 24h time with Unity’s AnimationCurve fields, I used Odin Inspector’s progress bar and set its width to be that of the animation curves. This way, the user can move the progress bar and use it as a reference for setting each property at a specified time of day and link it to important narrative beats.</p>
         <img src='posts/Grigorostok/weather_img_4.png'>
@@ -54,8 +102,86 @@
         <img src='posts/Grigorostok/importer_img_2.png'>
 
         <p>Using this tool saved us hours and hours of manual labor of dragging textures and materials all over the place - all with just the click of a button! I very much enjoyed digging deeper into Unity and finding solutions for features such as manually extracting the materials from a model (like in the Inspector) and fetching exposed shader properties.</p>
-        <img src='posts/Grigorostok/importer_img_4.png'>
-        <img src='posts/Grigorostok/importer_img_5.png'>
+    
+        <pre><code class="cs">private List&lt;Material&gt; ExtractMaterials(string modelPath)
+{
+    int result = 0;
+
+    try
+    {
+        AssetDatabase.StartAssetEditing();
+
+        HashSet&lt;string&gt; assetsToReload = new HashSet&lt;string&gt;();
+
+        IEnumerable&lt;Object&gt; materialsToExtract = AssetDatabase.LoadAllAssetsAtPath(modelPath).Where(x => x.GetType() == typeof(Material));
+
+        foreach (Object material in materialsToExtract)
+        {
+            result++;
+
+            string newAssetPath = modelPath[..(modelPath.Length - model.name.Length - 4)] + material.name + ".mat";
+
+            newAssetPath = AssetDatabase.GenerateUniqueAssetPath(newAssetPath);
+            string error = AssetDatabase.ExtractAsset(material, newAssetPath);
+
+            if (string.IsNullOrEmpty(error))
+            {
+                assetsToReload.Add(modelPath);
+            }
+        }
+            
+        foreach (string path in assetsToReload)
+        {
+            AssetDatabase.WriteImportSettingsIfDirty(path);
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+        }
+    }
+
+    finally
+    {
+        AssetDatabase.StopAssetEditing();
+    }
+
+    List&lt;Material&gt; extractedMaterials = LoadAllAssetsAtPath&lt;Material&gt;(Path.GetDirectoryName(modelPath));
+
+    if (result == 0 && extractedMaterials.Count != 0)
+    {
+        Log.Write("Materials already extracted.");
+    }
+
+    Log.Write($"Loaded &lt;b&gt;{extractedMaterials.Count}&lt;/b&gt; materials from the model's directory!");
+
+    return extractedMaterials;
+}       </code></pre>
+
+        <pre><code class="cs">private List<string> GetShaderPropertyList()
+{
+    List<string> properties = new();
+
+    if (shader == null)
+    {
+        return properties;
+    }
+
+    int propertyCount = shader.GetPropertyCount();
+
+    for (int i = 0; i &lt; propertyCount; i++)
+    {
+        if ((shader.GetPropertyFlags(i) & ShaderPropertyFlags.HideInInspector) != 0)
+        {
+            continue;
+        }
+
+        if (shader.GetPropertyType(i) != ShaderPropertyType.Texture)
+        {
+            continue;
+        }
+
+        properties.Add(shader.GetPropertyName(i));
+    }
+
+    return properties;
+}       </code></pre>
         
         <p>Next steps would include automatically replacing each model in its corresponding prefab or game object, but due to time constraints during the project, other tasks were prioritized instead. However, that would be a great next step for integrating the tool into other projects and making its own stand-alone asset.</p>
     
