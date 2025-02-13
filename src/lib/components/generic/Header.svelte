@@ -36,13 +36,15 @@
         border-radius: 10px;
         width: fit-content;
         min-width: 10em;
+        min-height: fit-content;
         box-shadow: 0 0 10px 0.1px rgb(142, 142, 142) inset;
         backdrop-filter: blur(32px) saturate(100%);
     }
 
     nav {
         display: flex;
-        height: 100%;
+        height: 2em;
+        height: fit-content;
     }
 
     a {
@@ -65,12 +67,17 @@
         filter: blur(32px);
     }
 
-    .hamburger {
+    .hamburger-wrapper {
+        pointer-events: none;
         display: flex;
+        justify-content: flex-end;
+    }
+
+    .hamburger {
+        pointer-events: all;
         position: sticky;
         top: 0;
         overflow: auto;
-        justify-content: flex-end;
         color: white;
         text-shadow: 0 0 10px white;
         margin-right: 1em;
@@ -99,10 +106,11 @@
             flex-direction: column;
             gap: 1em;
             height: 100%;
-            width: 100%;
+            width: fit-content;
             font-size: 1.3em;
             font-family: Lexend;
-            z-index: 10;
+            position: relative;
+            z-index: 20;
         }
 
         a {
@@ -139,6 +147,11 @@
 
 <div class="background"></div>
 <header>
+    <nav class='nav-desktop hide-on-mobile'>
+        <a href='/'>Work</a>
+        <a href='/about'>About</a>
+        <a href='' class='disabled'>Play</a>
+    </nav>
     <div class='nav-mobile glass {mobileNavActive ? "mobile-menu-active" : "mobile-menu-hidden"}'>
         <div class="nav-mobile-bg"></div>   
         <nav>
@@ -147,13 +160,10 @@
             <a href='' class='disabled'>Play</a>
         </nav>
     </div>   
-    <nav class='nav-desktop hide-on-mobile'>
-        <a href='/'>Work</a>
-        <a href='/about'>About</a>
-        <a href='' class='disabled'>Play</a>
-    </nav>
-    <div class="hamburger hide-on-desktop">
-        <button onclick={onHamburgerClicked}>{hamburgerIcon}</button>
+    <div class="hamburger-wrapper">
+        <div class="hamburger hide-on-desktop">
+            <button onclick={onHamburgerClicked}>{hamburgerIcon}</button>
+        </div>
     </div>
 </header>
 
