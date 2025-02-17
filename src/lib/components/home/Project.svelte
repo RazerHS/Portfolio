@@ -5,6 +5,18 @@
 </script>
 
 <style lang="scss">
+    :global {
+        .description-divider {
+            width: 20%;
+            height: 0.05em;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            margin-top: -0.5em;
+            margin-bottom: 0.5em;
+            margin: -0.5em 0 0.5em 0;
+        }
+    }
+
     :root {
         --gradient-color: rgb(0, 0, 0);
     }
@@ -12,43 +24,33 @@
     p {
         font-family: 'Lexend';
         font-size: 1.1em;
+
+        @media (max-width: 768px) {
+            font-size: 0.95em;
+        }
     }    
 
-    a {
-        text-decoration: none;
-    }
-
-    a:link , a:visited{
-        color: var(--accent-color2);
-    }
-
-    /* mouse over link */
-    a:hover {
-        color: var(--accent-color1);
-        text-decoration: underline;
-    }
-
-    /* selected link */
-    a:active {
-        color: var(--accent-color3);
-    }
-
     .container {
-        padding-bottom: 2em;
         border-radius: 12px;
         align-items: center;
         transition: all .6s;
         border: 7px solid var(--glass-border-color);
         position: relative;
         height: fit-content;
-        transform: translateY(-10px);
+        transform: translateY(-3px);
         opacity: 0;
         animation: loadIn 0.7s ease-in-out 0.35s forwards;
     }
 
     .container:hover {
-        transform: translate(-3px, -3px);
-        transition: transform .3s;
+        transition: all .1s;
+        box-shadow: 0px 0px 100px 3px rgba(14, 182, 194, 0.4);
+
+        h2 {
+            color: var(--accent-color1);
+            text-decoration-color: var(--accent-color1);
+            text-underline-offset: 0.1em;
+        }
     }
 
     .img-container {
@@ -70,6 +72,7 @@
         height: fit-content;
         padding-bottom: 1em;
         margin-top: 0.5em;
+        margin-bottom: 0.5em;
         
         @media (max-width: 768px) {
             margin-top: 0.25em;
@@ -122,6 +125,7 @@
         flex-wrap: wrap;
         height: auto;
         align-items: center;
+        padding-bottom: 1em;
     }
 
     .tag {
@@ -156,18 +160,20 @@
         margin: 0;
         display: flex;
         align-items: center;
+        align-content: center;
+        font-size: 250%;
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: var(--accent-color2);
+        text-decoration: underline 0.05em rgba(0, 0, 0, 0);
+        text-underline-offset: 0.2em;
+        transition: all 0.2s ease-out;
 
-        a {
-            font-size: 170%;
-            display: block;
-            width: 100%;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-
-            @media (max-width: 1024px) {
-                font-size: 155%;
-                text-decoration: underline;
-            }
+        @media (max-width: 1024px) {
+            font-size: 210%;
+            text-decoration: underline;
         }
     }
 
@@ -176,28 +182,49 @@
         height: 100%;
         z-index: 5;
     }
+
+    .divider {
+        width: 10%;
+        height: 0.05em;
+        background: white;
+        margin: 0 0 1em 0;
+        display: flex;
+
+        @media (max-width: 768px) {
+            margin: 0 0 0.75em 0;
+        }
+    }
+
+    a {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
+
 <div class='container glass'>
+    <a href='{"/" + name.toLowerCase().replace(' ', '_')}' aria-label="project"> </a>    
     <div class='img-container'>
         <img src={featuredImageSrc} alt={name}>
     </div>
-        <div class='content-container'>
-            <div class='title-container'>
-                <h2> <a href='{"/" + name.toLowerCase().replace(' ', '_')}'> {name} </a></h2>
-                <div class='tools-container'>
-                    {#each tools as tool}
-                        <img class='tool-img' src={tool.toLowerCase() + "_icon.png"} alt=''>
-                    {/each}
-                </div>
-            </div>
-            <p class='description'> {description} </p>
-            <div class='tags-container'>
-                {#each tags as tag}
-                    <div class='tag {tag.toLowerCase()}'>
-                        <p> {tag}
-                    </div>
+    <div class='content-container'>
+        <div class ='title-container'>
+            <h2> {name} </h2>
+            <div class='tools-container'>
+                {#each tools as tool}
+                    <img class='tool-img' src={tool.toLowerCase() + "_icon.png"} alt=''>
                 {/each}
-            </div>    
+            </div>
         </div>
+        <p class='description'> {@html description} </p>
+        <div class='tags-container'>
+            {#each tags as tag}
+                <div class='tag {tag.toLowerCase()}'>
+                    <p> {tag}
+                </div>
+            {/each}
+        </div>    
+    </div>
 </div>

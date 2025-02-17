@@ -2,11 +2,12 @@
     import Header from '$lib/components/generic/Header.svelte';
     import Footer from '$lib/components/generic/Footer.svelte';
     import Backdrop from '$lib/components/generic/Backdrop.svelte';
+    import ContactButton from '$lib/components/generic/ContactButton.svelte';
     import { onMount, onDestroy } from 'svelte';
     import hljs from 'highlight.js';
     import 'highlight.js/styles/atom-one-dark.css';
 
-    let {title, featuredImageSrc, timeline, role, tools} = $props();
+    let {title, featuredImageSrc, timeline, role, tools, githubUrl} = $props();
     let {content} = $state('');
 
     let observer;
@@ -77,7 +78,7 @@
 </script>
 
 <style lang="scss">
-    :global{
+    :global {
         .content {
             
             @media (max-width: 768px) {
@@ -360,7 +361,6 @@
         font-family: 'Londrina Solid';
         color: white;
         display: flex;
-        margin: 0.5em auto 1em auto;
         justify-content: center;
         font-size: 5em;
         transform: translateY(-5px);
@@ -404,6 +404,17 @@
             gap: 0.1em;
             font-size: 1.3em;
         }
+    }
+
+    .post-header-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0.5em 0 1em 0;
+    }
+
+    .github-link {
     }
 
     .post-meta-category {
@@ -486,7 +497,12 @@
 <Header />
 
 <div class='post-container'>
-    <h1>{title}</h1>
+    <div class="post-header-container">
+        <h1>{title}</h1>
+        <!-- <div class="github-link">
+            <ContactButton src='/github_icon.png' alt='Github' link='https://github.com/RazerHS' text='Repository' fadeInDelay=0.5/>
+        </div> -->
+    </div>
     <div class=post-meta>
         <div class='post-meta-category'> Timeline
             <div class='separator'></div>

@@ -13,24 +13,24 @@
         //     description: 'A single-player roguelike-adventure mix depicted by the twisted fates of two protagonists from different worlds. I worked on the game’s main architecture, most notably creating our turn-based combat system and an effective way to manage data.' 
         // },
         {
-            name: 'Teeko',
-            tools: ['Unity', 'Odin'],
-            tags: ['Tools', 'Systems'],
-            description: 'An action-adventure platformer featuring rich storytelling and intense boss battles inspired by the Costa Rican ‘La Mascarada’ celebration. I built a custom node-based dialogue tool to speed up the workflow of narrative designers featuring in-editor text animation previews, fast iteration, and source control compatibility.',
-            featuredImageSrc: 'posts/Teeko/teeko_featured.png'
-        },
-        {
             name: 'Polished Trust',
             tools: ['Unity', 'Odin'],
             tags: ['Tools', 'Gameplay', 'Systems'],
-            description: 'A networked roguelike deckbuilder for two players working together to clean a luxury hotel. Built as a graduation project using Photon Fusion 2 with the goal of teaching card game mechanics to new players through social gameplay.',
+            description: 'A <strong>social</strong> co-op roguelike deckbuilder about cleaning a luxury hotel created to card games more accessible to newer players. <br> <br> <div class=\'description-divider\'></div> Integrated a state machine-based multiplayer workflow for <strong>networked</strong> co-op play using Photon Fusion 2 and a dynamic card effect system to iterate and balance cards while in play mode.',
             featuredImageSrc: 'posts/PT/polished_trust_featured.jpg'
+        },
+        {
+            name: 'Teeko',
+            tools: ['Unity', 'Odin'],
+            tags: ['Tools', 'Systems'],
+            description: 'An action-adventure platformer featuring rich storytelling and intense boss battles inspired by the Costa Rican <i>\'La Mascarada\'</i> celebration.  <br> <br> <div class=\'description-divider\'></div> Built a custom <b>node-based dialogue tool</b> using Unity’s experimental Graph API featuring in-editor text animation previews, fast iteration, and source control compatibility. ',
+            featuredImageSrc: 'posts/Teeko/teeko_featured.png'
         },
         {
             name: 'Grigorostok',
             tools: ['Unity', 'Odin'],
             tags: ['Tools', 'Gameplay', 'Systems'],
-            description: 'A futuristic murder mystery detective game in which people’s data is protected through the use of decentralized digital wallets. As a solo programmer, the most memorable features I built consisted of a dynamic weather system with corresponding procedural and custom controls for each day of the plot and an asset importer tool to speed up our art integration and level design workflows.', 
+            description: 'A futuristic murder-mystery game about the digitization of data. <br> <br> <div class=\'description-divider\'></div> Developed all aspects of gameplay, including dynamic weather, a tool to automate art iteration for level assets, and a layered interaction system to support non-linear storytelling.', 
             featuredImageSrc: 'posts/Grigorostok/grigorostok_featured.png'
         },
     ]

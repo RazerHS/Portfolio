@@ -1,7 +1,7 @@
 <script>
     import '$lib/styles/style.scss';
 
-    let {src, alt, link, invertColors, fadeInDelay, text} = $props();
+    let {src, alt, link, fadeInDelay, text} = $props();
 </script>
 
 <style lang='scss'>

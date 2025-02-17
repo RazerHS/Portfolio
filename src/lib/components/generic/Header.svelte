@@ -150,14 +150,14 @@
     <nav class='nav-desktop hide-on-mobile'>
         <a href='/'>Work</a>
         <a href='/about'>About</a>
-        <a href='' class='disabled'>Play</a>
+        <a href='' class='disabled'>Dabbles</a>
     </nav>
     <div class='nav-mobile glass {mobileNavActive ? "mobile-menu-active" : "mobile-menu-hidden"}'>
         <div class="nav-mobile-bg"></div>   
         <nav>
             <a href='/'>Work</a>
             <a href='/about'>About</a>
-            <a href='' class='disabled'>Play</a>
+            <a href='' class='disabled'>Dabbles</a>
         </nav>
     </div>   
     <div class="hamburger-wrapper">
