@@ -107,11 +107,13 @@ a:hover {
 }
 
 :root {
-    --color-primary: rgb(144, 58, 237);
-    --color-secondary: rgb(14, 182, 194);
-    --color-accent: rgb(241, 103, 24);
-    --color-text: rgb(255, 255, 255);
-    --glass-border-color: rgba(255, 255, 255, 0.125);
+    --color-primary: hsl(266, 79%, 58%);
+    --color-primary-10: hsl(266, 79%, 58%, 10%);
+    --color-primary-20: hsl(266, 79%, 58%, 20%);
+    --color-secondary: hsl(185, 86%, 41%);
+    --color-accent: hsl(24, 91%, 52%);
+    --color-text: hsl(0, 0%, 100%);
+    --glass-border-color: hsla(0, 0%, 100%, 0.125);
 
     --border-radius: 10px;
     --image-box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);

@@ -22,16 +22,19 @@
         
         <p>All nodes also contain their own data which can be added or removed easily, as these fields are drawn using Odin Inspector. Adding additional fields required quite a bit of manual setup in UI toolkit, so to simplify the process, I configured Odin to draw them in ImGUI and then inserted them within an ImGUI container for use in UI toolkit.</p>
         
-        <pre><code class="cs">public void DrawNodeProperties(DialogueNode dialogueNode)
+        <div class="code-snippet">
+            <pre><code class="cs">public void DrawNodeProperties(DialogueNode dialogueNode)
 {
     IMGUIContainer mainImGuiContainer = new IMGUIContainer(OnDrawPropertyTree);
 
     dialogueNode.propertyTree = PropertyTree.Create(Data);
 
     dialogueNode.mainContainer.Add(mainImGuiContainer);
-}        </code></pre>
+}           </code></pre>
+        </div>
         
-        <pre><code class="cs">[Serializable]
+        <div class="code-snippet">
+            <pre><code class="cs">[Serializable]
 public class DialogueNodeData
 {
     [SerializeField, ColoredBoxGroup("Passage Settings", true, true), ShowIf("nodeType", NodeType.START)] private bool showLetterbox;
@@ -40,13 +43,15 @@ public class DialogueNodeData
     [SerializeField, ColoredBoxGroup("Data"), LabelWidth(70), EnumPaging, LabelText("Face")] private FacialExpressionType facialExpression;
     [SerializeField, ColoredBoxGroup("Data"), LabelWidth(70), HideLabel, TextArea] private string dialogueText;
 
-...     </code></pre>
-
+...         </code></pre>
+        </div>
+       
         <h3>Pretty Animation Previews</h3>
         <p>To animate dialogue text, we use Febucci’s Text Animator, in which previewing text was only possible inside of Text Mesh Pro in the editor. This made it tedious to visualize specific animations of our dialogue lines, so to make this easier, I set up a custom stage that instantiated our dialogue box and inserted any dialogue you hover within the story graph. </p>    
         <img src='posts/Teeko/storygraph_img_6.gif'>
 
-        <pre><code class="cs">private void CreateScenePreview()
+        <div class="code-snippet">
+            <pre><code class="cs">private void CreateScenePreview()
 {
     if (dialogueWidgetPreviewPrefab == null)
     {
@@ -66,7 +71,9 @@ public class DialogueNodeData
     {
         throw Log.Exception("Background dialogue widget component not found in root game object of preview!");
     }
-}       </code></pre>
+}           </code></pre>
+        </div>
+        
 
         <p>By using the mouse, you could stop and play the text’s current animations. Combined with a prefab of our actual dialogue widget, you can get a proper dialogue preview within the story graph:</p>
         <img src='posts/Teeko/storygraph_img_8.gif'>

@@ -35,6 +35,14 @@
         collapsable.classList.toggle("active");
         content.classList.toggle("collapsable-hidden");
 
+       highlightCodeBlocks(content);
+
+        let maxHeight = content.scrollHeight + "px";
+
+        content.style.maxHeight = content.style.maxHeight ? null : maxHeight;
+    }
+
+    function highlightCodeBlocks(content) {
         let codeBlocks = content.getElementsByTagName("code");
 
         Array.from(codeBlocks).forEach((block) => {
@@ -45,10 +53,6 @@
             hljs.highlightElement(block);
             block.dataset.highlighted = true;
         });
-
-        let maxHeight = content.scrollHeight + "px";
-
-        content.style.maxHeight = content.style.maxHeight ? null : maxHeight;
     }
 
     onMount(() => {
@@ -80,6 +84,7 @@
 <style lang="scss">
     :global {
         .content {
+
             @media (max-width: 768px) {
                 padding: 0;
             }
@@ -130,22 +135,30 @@
                 animation: textGlow 3s ease-in-out infinite alternate;
             }
 
+            .code-snippet {
+                box-sizing: border-box;
+                margin: auto;
+                max-width: 90dvw;
+                overflow: auto;
+
+                @media (max-width: 768px) {
+                    max-width: 80dvw;
+                }
+
+                @media (max-width: 620px) {
+                    max-width: 65dvw;
+                }
+            }
+
             pre {
                 box-sizing: border-box;
-                max-width: 100%;
-                height: auto;
-                overflow-x: auto;
-                white-space: pre-wrap;
-                margin: auto;
-                width: 100%;
-                min-width: 0 !important;
-                display: inline-block;
             }
 
             code {
                 border-radius: 10px;
-                box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);
-            }
+                background-color: hsl(200, 20%, 10%);
+                border: 3px solid var(--color-primary-20);
+            }         
 
             .collapsable-end-divider {
                 width: 25%;
@@ -181,7 +194,7 @@
                 cursor: pointer;
                 justify-content: center;
                 align-items: center;
-                height: var(--spacing-2xl);
+                height: calc(var(--spacing-2xl) * 1.25);
                 width: 100%;
                 border-top-left-radius: var(--border-radius);
                 border-top-right-radius: var(--border-radius);
@@ -267,6 +280,7 @@
         margin: auto;
         padding: 0 calc(var(--spacing-3xl) * 2);
         max-width: 780px;
+        min-width: 0;
 
         @media (max-width: 1024px) {
             padding: 0 var(--spacing-xl);
@@ -287,6 +301,10 @@
         row-gap: var(--spacing-s);
         column-gap: var(--spacing-xl);
         justify-content: center;
+
+        @media (min-width: 1921px) {
+            width: 1920px;
+        }
 
         @media (max-width: 1024px) {
             padding: 0 var(--spacing-xl);
@@ -310,6 +328,10 @@
             box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);
             opacity: 0; 
             animation: loadIn 1s 0.3s forwards;
+
+            @media (min-width: 1921px) {
+                flex: 0 0 40%;
+            }
         }
 
         .project-details {
