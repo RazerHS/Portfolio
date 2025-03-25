@@ -1,10 +1,18 @@
 <script>
-    import "$lib/styles/style.scss";
+    import "$lib/styles/app.scss";
     import Header from '$lib/components/generic/Header.svelte';
     import Footer from '$lib/components/generic/Footer.svelte';
     import Backdrop from '$lib/components/generic/Backdrop.svelte';
     import TimelineElement from "$lib/components/generic/TimelineElement.svelte";
     import ContactButton from "$lib/components/generic/ContactButton.svelte";
+    import { onMount } from "svelte";
+
+    export let data;
+
+    onMount(() => {
+        console.log(data);
+    });
+
 </script>
 
 <style lang='scss'>
@@ -15,12 +23,6 @@
         backdrop-filter: blur(32px) saturate(100%);
         margin-top: -4.9em;
         padding-top: 6em;
-    }
-
-    p {
-        color: white;
-        font-family: Lexend;
-        font-size: 1.4em;
     }
 
     .hero-container {

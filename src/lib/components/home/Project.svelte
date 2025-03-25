@@ -1,5 +1,5 @@
 <script> 
-    import '$lib/styles/style.scss';
+    import '$lib/styles/app.scss';
 
     let {name, tools, tags, description, featuredImageSrc} = $props();
 </script>
@@ -21,15 +21,6 @@
         --gradient-color: rgb(0, 0, 0);
     }
 
-    p {
-        font-family: 'Lexend';
-        font-size: 1.1em;
-
-        @media (max-width: 768px) {
-            font-size: 0.95em;
-        }
-    }    
-
     .container {
         border-radius: 12px;
         align-items: center;
@@ -47,8 +38,8 @@
         box-shadow: 0px 0px 100px 3px rgba(14, 182, 194, 0.4);
 
         h2 {
-            color: var(--accent-color1);
-            text-decoration-color: var(--accent-color1);
+            color: var(--color-primary);
+            text-decoration-color: var(--color-primary);
             text-underline-offset: 0.1em;
         }
     }
@@ -140,39 +131,37 @@
     }
 
     div.tools {
-        background: linear-gradient(211deg, var(--accent-color2) 20%, var(--gradient-color) 130%);
+        background: linear-gradient(211deg, var(--color-secondary) 20%, var(--gradient-color) 130%);
     }
 
     div.pitching {
-        background: linear-gradient(211deg, var(--accent-grey) 0%, var(--gradient-color) 130%);
+        background: linear-gradient(211deg, rgb(142, 131, 126) 0%, var(--gradient-color) 130%);
     }
 
     div.systems {
-        background: linear-gradient(211deg, var(--accent-color1) 0%, var(--gradient-color) 130%);
+        background: linear-gradient(211deg, var(--color-primary) 0%, var(--gradient-color) 130%);
     }
 
     div.gameplay {
-        background: linear-gradient(211deg, var(--accent-color3) 0%, var(--gradient-color) 130%);
+        background: linear-gradient(211deg, var(--color-accent) 0%, var(--gradient-color) 130%);
     }
 
     h2 {
-        font-family: 'Londrina Solid';
         margin: 0;
         display: flex;
         align-items: center;
         align-content: center;
-        font-size: 250%;
         display: block;
         width: 100%;
         white-space: nowrap;
         text-overflow: ellipsis;
-        color: var(--accent-color2);
+        color: var(--color-secondary);
         text-decoration: underline 0.05em rgba(0, 0, 0, 0);
         text-underline-offset: 0.2em;
         transition: all 0.2s ease-out;
+        font: var(--h2);
 
         @media (max-width: 1024px) {
-            font-size: 210%;
             text-decoration: underline;
         }
     }

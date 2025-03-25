@@ -16,12 +16,12 @@
         margin-left: auto;
         margin-right: auto;
         height: 1vh;
-        padding-top: 1em;
+        padding-top: 16px;
         z-index: 10;
         overflow-x: clip;
 
-        @media (min-width: 1024px) {
-            height: 1.5em;
+        @media (min-width: var(--tablet-width)) {
+            height: 24px;
         }
     }
 

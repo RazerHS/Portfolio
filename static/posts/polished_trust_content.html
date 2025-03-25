@@ -1,12 +1,18 @@
 <div class="content"> 
     <p>I love card games. A <b>lot</b>. I also really like spending time with my friends, some of whom are of course not card game players. Trying to play card games with those friends - despite every inch of me trying to will into existence - naturally ends in frustration for both parties because the difficulty curve of card games for new players is a vast <color class='color3'>abyss</color>.</p>
     <p>This inspired me to create a deckbuilder with the goal of making card games accessible to new card game players as my graduation project. The final result was <i><color class='color1'>Polished Trust</color></i>, a roguelike deckbuilder in which two players work together with the same set of cards to clean a luxury hotel. </p>
+    <div class="spacing-xs"></div>
     <img src='posts/PT/polished_trust_short_gameplay.gif'>
+    <div class="spacing-xs"></div>
     
     <p>During the 4 months of intense work, I researched, concepted, prototyped, and evaluated until the end result was something I was satisfied with. To fill in the gaps, I instilled the help of an artist and composer to create a few assets and the <color class='color2'>jazzy</color> soundtrack. The beta card art is made by yours truly! </p>
+    <div class="spacing-xs"></div>
     <video src='posts/PT/polished_trust_gameplay.mp4' controls loop='true' autoplay='true'></video>      
+    <div class="spacing-xs"></div>
 
     <p>If code is your thing, I detail my thought process for certain aspects of the project below:</p>
+    <div class="spacing-xs"></div>
+    
     <button class='glass collapsable'><h2>The Multiplayer Workflow</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
         <h3>PUN2 - Perks and Quirks</h3>
@@ -52,7 +58,7 @@
     });
     
 ...     </code></pre>
-
+        <div class="spacing-xs"></div>
         <pre><code>[Rpc]
 private void RPC_TransformIntoTemporaryCard(Card card, int id)
 {
@@ -65,6 +71,7 @@ private void RPC_TransformIntoTemporaryCard(Card card, int id)
         <div class="collapsable-end-divider"></div>      
     </div>
 
+    <div class="spacing-m"></div>
     <button class='glass collapsable'><h2>Dynamic Card Effects</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
         <h3>Editing the Editor</h3>

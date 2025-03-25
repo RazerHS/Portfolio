@@ -1,8 +1,8 @@
 <script>
     let {title, role, color, startDate, endDate, sideProject, logo} = $props(); 
 
-    const mainProjectColor = 'var(--accent-color2)';
-    const sideProjectColor = 'var(--accent-color3)';
+    const mainProjectColor = 'var(--color-secondary)';
+    const sideProjectColor = 'var(--color-accent)';
 </script>
 
 <style lang='scss'>
@@ -87,7 +87,7 @@
         img {
             max-width: 4em;
             max-height: 4em;
-            filter: drop-shadow(0 0 0.1rem var(--accent-color1)) drop-shadow(0 0 0.1rem var(--accent-color2));
+            filter: drop-shadow(0 0 0.1rem var(--color-primary)) drop-shadow(0 0 0.1rem var(--color-secondary));
         }
     }
 </style>
@@ -96,7 +96,7 @@
     <!-- <div class="logo-container">
         <img src={logo} alt=''>
     </div> -->
-    <div class="timeline-element glass" style="background: linear-gradient(100deg, {sideProject ? sideProjectColor : mainProjectColor}, var(--accent-color1));">
+    <div class="timeline-element glass" style="background: linear-gradient(100deg, {sideProject ? sideProjectColor : mainProjectColor}, var(--color-primary));">
         <div class="backdrop"></div>
         <div class="heading">
             <p class='title'>{title}</p>

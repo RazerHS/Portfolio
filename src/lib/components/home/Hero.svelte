@@ -1,5 +1,5 @@
 <script>
-    import '$lib/styles/style.scss';
+    import '$lib/styles/app.scss';
     import Button from '$lib/components/generic/Button.svelte';
     import { fade } from 'svelte/transition';
     import ContactButton from '../generic/ContactButton.svelte';
@@ -176,7 +176,7 @@
     }
 
     p {
-        font-family: 'Londrina Solid';
+        font: var(--p);
     }
 
     h1, h2 {
@@ -193,18 +193,22 @@
         animation: fadeIn 1.5s ease-in-out 0.75s forwards;
     }
 
+    h1 {
+        font: var(--h1); 
+    }
+
     color.color1 {
-        color: var(--accent-color2);
+        color: var(--color-primary);
         animation: textGlow 3s ease-in-out infinite alternate;
     }
 
     color.color2 {
-        color: var(--accent-color3);
+        color: var(--color-secondary);
         animation: textGlow 4s ease-in-out infinite alternate;
     }
 
     color.color3 {
-        color: var(--accent-color1);
+        color: var(--color-accent);
         animation: textGlow 5s ease-in-out infinite alternate;
     }
 
