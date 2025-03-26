@@ -1,6 +1,6 @@
 export async function load() {
 
-    pageCount = 0;
+    let pageCount = 0;
 
     try {
         const response = await fetch(`https://hearthstone.blizzard.com/en-us/api/community/leaderboardsData?region=EU&leaderboardId=standard&page=${pageCount}&seasonId=135&blzcmp=app`);

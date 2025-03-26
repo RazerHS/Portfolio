@@ -283,7 +283,7 @@
         min-width: 0;
 
         @media (max-width: 1024px) {
-            padding: 0 var(--spacing-xl);
+            padding: 0 var(--spacing-m);
         }
 
         @media (max-width: 768px) {
@@ -294,29 +294,56 @@
     }
     
     .hero-container {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0 calc(var(--spacing-3xl) * 2);
         margin: auto;
         row-gap: var(--spacing-s);
         column-gap: var(--spacing-xl);
         justify-content: center;
+        display: grid;
+        grid-template-areas: 
+            "col1 col2"
+            "col1-2 col1-2";
+
+        @media (max-width: 1345px) {
+            grid-template-areas: 
+            "col1 col1"
+            "col2 col1-2";
+            padding: 0 calc(var(--spacing-3xl) * 2);
+        }
+
+        @media (max-width: 768px) {
+            grid-template-areas: 
+            "col1"
+            "col2"
+            "col1-2";
+        }
+
+        > .featured-image {
+            grid-area: col1;
+            }
+
+        > .post-meta {
+            grid-area: col2;
+        }
+
+        > .project-details {
+            grid-area: col1-2;
+        }
 
         @media (min-width: 1921px) {
-            width: 1920px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: 
+                "col1 col2"
+                "col1-2 col1-2";
+            max-width: 1200px;
         }
 
         @media (max-width: 1024px) {
-            padding: 0 var(--spacing-xl);
+            padding: 0 var(--spacing-m);
         }
 
         @media (max-width: 768px) {
             padding: 0 var(--spacing-m);
-        }
-
-        > * {
-            max-width: 100%;
-            flex: 1 0 30%;
         }
 
         .featured-image {
@@ -329,14 +356,16 @@
             opacity: 0; 
             animation: loadIn 1s 0.3s forwards;
 
-            @media (min-width: 1921px) {
-                flex: 0 0 40%;
+            @media (max-width: 1024px) {
+                max-width: 100%;
             }
         }
 
         .project-details {
-            max-width: 780px;
+            max-width: 944px;
             min-width: 400px;
+            margin: auto;
+            height: 100%;
 
             @media (max-width: 768px) {
                 max-width: 100%;
@@ -352,6 +381,10 @@
         gap: var(--spacing-s);
         opacity: 0;
         animation: loadIn 1s 0.2s forwards;
+
+        @media (min-width: 1920px) {
+            flex: 0 0 30%;
+        }
 
         h3, p {
             margin-top: var(--spacing-xs);
