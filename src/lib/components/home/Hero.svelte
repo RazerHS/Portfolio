@@ -43,6 +43,7 @@
         height: 80vh;
         transform: translateY(-10px);
         animation: loadIn 0.7s ease-in-out forwards;
+        max-width: 2000px;
     }
 
     .hero-separator {

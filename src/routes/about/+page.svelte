@@ -21,116 +21,89 @@
         height: 100%;
         overflow: hidden;
         backdrop-filter: blur(32px) saturate(100%);
-        margin-top: -4.9em;
-        padding-top: 6em;
+        margin-top: -80px;
+        padding-top: 96px;
     }
 
-    .hero-container {
-        display: flex;
-        justify-content: space-evenly;
-        width: 100%;
+    section {
+        padding: 0 var(--spacing-m);
+
+        .lore-container {
+            width: min(50%, 1000px);    
+        }
+
+        > * {
+            max-width: 1344px;
+            margin: auto;
+
+            @media (max-width: 1256px) {
+                width: 60% !important;
+            }
+
+            @media (max-width: 768px) {
+                width: 100% !important;
+            }
+        }
+    }
+
+    .hero-grid {
+        width: min(1344px, 100%);    
         opacity: 0;
         animation: loadIn 1s 0.2s forwards;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: var(--spacing-2xl);
+        justify-items: center;
 
-        @media (max-width: 1024px) and (min-width: 768px) {
-            flex-direction: column;
-            align-items: center;
+        @media (max-width: 1256px) {
+            width: 60%;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-m);
         }
 
         @media (max-width: 768px) {
-            flex-direction: column;
-            align-items: center;
+            width: 100%;
         }
     }
 
     .hero-text-container {
-        color: white;
-        font-family: Lexend;
-        width: 50%;
-        margin: 1em 2em;
-
-        @media (min-width: 1025px) {
-            padding-top: 0;
-            margin-top: 0;
-        }
-
-        @media (max-width: 1024px) and (min-width: 768px) {
-                width: 90%;
-            }
-
-        @media (max-width: 768px) {
-            width: 90%;
-        }
-
         p {
-            @media (min-width: 1025px) {
-                padding-top: 0;
-                margin-top: 0
-            }
+            margin-top: 0;
         }
     }
 
     .igi-container {
-        width: 30em;
-        height: 30em;
-        display: flex;
-        justify-content: center;
-        
+        aspect-ratio: 1 / 1;
+
         img {
             height: 100%;
             width: 100%;
             object-fit: cover;
         }
 
-        @media (max-width: 1024px) and (min-width: 768px) {
-            width: 90vw;
-            height: 100vh;
-            margin: 0;
-        }
-
-        @media (max-width: 1024px) and (min-width: 768px) and (max-height: 800px) {
-            height: 60em;
-        }
-
-        @media (max-width: 768px) {
-            width: 90vw;
-            height: 30em;
-            margin: 0;
-        }
-
-        @media (max-device-width: 1024px) and (orientation: landscape) {
-            width: 90vw;
-            height: 40em;
-            margin: 0;
+        @media (max-width: 1256px) {
+            gap: var(--spacing-xl);
         }
     }
 
-    .main-content {
-        width: 50%;
-        margin: auto;
+    .contact-container {
+        display: flex;
+        gap: var(--spacing-s);
+        font-size: 1.1rem;
 
-        @media (max-width: 1024px) {
-            width: 90%;
-        }
-
-        @media (max-width: 768px) {
-            width: 90%;
+        @media (max-width: 1256px) {
+            justify-content: center;
         }
     }
    
     .divider {
         overflow: hidden;
-        width: 10em;
-        height: 0.2em;
+        width: 160px;
+        height: var(--divider-height);
+        margin: auto;
         background-color: white;
-        border-radius: 10px;
-        margin: 5em auto;
+        border-radius: var(--border-radius);
         animation: textGlow 5s infinite, loadIn 0.4s ease-in-out forwards;
-
-        @media (max-width: 1024px) {
-            margin-top: 0.5em;
-            margin-bottom: 3em;
-        }
     }
 
     img {
@@ -141,95 +114,56 @@
 
     h1 {
         text-align: center;
-        color: white;
-        font-family: 'Londrina Solid';
-        font-size: 5em;
         transform: translateY(-5px);
         animation: textGlow 5s infinite ease-in-out alternate, visibleLoadIn 0.8s 0.1s forwards;
-
-        @media (min-width: 768px) and (max-width: 1024px) {
-            font-size: 7em;
-            margin-bottom: 0.5em;
-        }
-
-        @media (max-width: 768px) {
-            font-size: 3.5em;
-            margin-bottom: 0.5em;
-        }
     }
 
-    h3 {
-        color: white;
-        font-family: 'Londrina Solid';
-        font-size: 3em;
-        animation: textGlow 5s infinite ease-in-out alternate;
-        text-decoration: underline;
-        padding-left: 0.1em;
-        margin-bottom: 0.5em;
+    h2 {
+        opacity: 0;
+        animation: textGlow 5s infinite ease-in-out alternate, loadIn 1s 0.5s forwards;
+    }
 
-        @media (max-width: 768px) {
-            margin-top: 0.75em;
-        }
+    .timeline-container {
+        padding: 0 var(--spacing-m);
+        margin: auto;
+        max-width: 1344px;    
     }
 
     .timeline {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        width: 100%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(20, 1fr);
+        gap: var(--spacing-xs);
         opacity: 0;
-        gap: 2em;
         animation: loadIn 1s 0.5s forwards;
-        margin-bottom: 4em;
 
-        @media (max-width: 1024px) {
-            margin-bottom: 2em;
-            margin-top: 0em;
-        }
-    }
-
-    .contact-container {
-        display: flex;
-        gap: 1em;
-        font-size: 1.3em;
-        margin-top: 2em;
-
-        @media (max-width: 768px) {
-            justify-content: center;
+        @media (max-width: 1031px) {
+            grid-template-columns: none;
+            grid-template-rows: repeat(5, auto);
         }
     }
 
     .images-container {
-        display: flex;
-        justify-content: space-evenly;
+        display: flex;        
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-s);
 
         img {
-            width: 44%;
+            max-width: 350px;
             object-fit: cover;
-            border-radius: 20px;
+            border-radius: var(--border-radius);
             box-shadow: 0 0 10px 0.1px rgb(105, 105, 105);
-        }
-
-        @media (max-width: 768px) {
-            flex-direction: column;
-            align-items: center;
-
-            img {
-                width: 90%;
-                margin-bottom: 1em;
-            }
+            flex: 0 1 150px;
         }
     }
 
     .post-end-divider {
         width: 10%;
-        margin: 4em auto 3em auto;
+        margin: auto;
         background-color: white;
-        height: 0.1em;
-
-        @media (max-width: 768px) {
-            margin-top: 2em;
-            
-        }
+        height: var(--divider-height);
     }
 
     figure {
@@ -261,45 +195,58 @@
 <div class='backdrop'>
     <h1>I’m Igor. </h1>
     <div class="divider"></div>
-    <div class="hero-container">
-        <div class="igi-container">
-            <img src="/igor.jpg" alt="">
-        </div>
-        <div class="hero-text-container">
-            <p>I’m a Serbian game developer based in Groningen, Netherlands. </p>
-            <p>During my studies, I made all kinds of games and prototypes, eventually leading me to discover a painterly interest in <color class='color1'>tools</color>. I grew to love synthesizing workflows and using my creativity to sharpen the work of my team. Along the way, I found that the journey of creation and learning are just as significant as any final product.</p>
-            <p>I am currently looking for <color class='color2'>new opportunities</color>, so if you like what I do, let’s chat!</p>
-            <div class='contact-container'>
-                <ContactButton src='/linkedin_icon.png' alt='LinkedIn' link='https://www.linkedin.com/in/igor-kovacevic-04b931239/' text='LinkedIn' fadeInDelay=0.7/>
-                <ContactButton src='/email_icon.png' alt='Email' link='mailto:igor.kovacevic550@gmail.com' text='Email' fadeInDelay=0.8/>
-                <ContactButton src='/cv_icon.png' alt='CV' link='/CV - Igor Kovacevic.pdf' text='CV' fadeInDelay=0.9/>
+    <div class="spacing-2xl"></div>
+    <section>
+        <div class="hero-grid">
+            <div class="igi-container">
+                <img src="/igor.jpg" alt="">
+            </div>
+            <div class="hero-text-container">
+                <p>I’m a Serbian game developer based in Groningen, Netherlands. </p>
+                <p>During my studies, I made all kinds of games and prototypes, eventually leading me to discover a painterly interest in <color class='color1'>tools</color>. I grew to love synthesizing workflows and using my creativity to sharpen the work of my team. Along the way, I found that the journey of creation and learning are just as significant as any final product.</p>
+                <p>I am currently looking for <color class='color2'>new opportunities</color>, so if you like what I do, let’s chat!</p>
+                <div class="spacing-xs"></div>
+                <div class='contact-container'>
+                    <ContactButton src='/linkedin_icon.png' alt='LinkedIn' link='https://www.linkedin.com/in/igor-kovacevic-04b931239/' text='LinkedIn' fadeInDelay=0.7/>
+                    <ContactButton src='/email_icon.png' alt='Email' link='mailto:igor.kovacevic550@gmail.com' text='Email' fadeInDelay=0.8/>
+                    <ContactButton src='/cv_icon.png' alt='CV' link='/CV - Igor Kovacevic.pdf' text='CV' fadeInDelay=0.9/>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="main-content">
-        <h3>Experience</h3>
+    </section>
+    <div class="spacing-l"></div>
+    <div class="timeline-container">
         <div class="timeline">
-            <TimelineElement title='Teeko (Side Project)' role ='Tools & Systems Programmer' startDate='April &#39;24' endDate='Present' sideProject=true  logo='/teeko_logo.png'/>
-            <TimelineElement title='Linx Interactive' role ='Graduation Intern' startDate='Feb &#39;24' endDate='July &#39;24' logo='/linx_logo.png'/>
-            <TimelineElement title='Linx Interactive' role ='Programming Intern' startDate='Feb &#39;23' endDate='July &#39;23' logo='/linx_logo.png'/>
-            <TimelineElement title='Unsealed Studios (Side Project)' role ='Lead Programmer' startDate='Sep &#39;22' endDate='Aug &#39;23' sideProject=true logo='/unsealed_logo.png'/>
+            <TimelineElement title='Ripe Render' role ='Tools & Systems Programmer' startDate='April &#39;24' endDate='Present' sideProject=true  logo='/teeko_logo.png' rowSpan="1 / 1" columnSpan="12 / 20" />
+            <TimelineElement title='Linx Interactive' role ='Graduation Intern' startDate='Feb &#39;24' endDate='July &#39;24' logo='/linx_logo.png' rowSpan="2 / 2" columnSpan="11 / 16" />
+            <TimelineElement title='Linx Interactive' role ='Programming Intern' startDate='Feb &#39;23' endDate='July &#39;23' logo='/linx_logo.png' rowSpan="3 / 3" columnSpan="4 / 9" />
+            <TimelineElement title='Unsealed Studios' role ='Lead Programmer' startDate='Sep &#39;22' endDate='Aug &#39;23' sideProject=true logo='/unsealed_logo.png' rowSpan="4 / 4" columnSpan="2 / 10" />
+            <TimelineElement title='Game Design' role ='Student' startDate='Sep &#39;20' endDate='July &#39;24' logo='/unsealed_logo.png' rowSpan="5 / 5" columnSpan="1 / 16" />
         </div>
-        <div class="text-container">
-            <h3>Lore</h3>
-            <p>As an avid card gamer player for most of my existence - ranging from Dream Quest to hitting #1 on Hearthstone’s Europe leaderboards - game development has always lived in my heart rent-free. Years later, there is nothing more <color class='color2'>fulfilling</color> than using that inspiration to build my own card games and give back to a community I love.</p>
-            <figure>
-                <span>Peter Whalen's Dream Quest</span>
-                <img src="/dream_quest.jpg" alt="Dream Quest">
-            </figure>
-            <p>Outside work, you’ll find me bouncing on the volleyball court or <color class='color1'>cheerfully</color> yapping with friends. At home, I also spend a healthy chunk of time practicing music (drums, singing, guitar), and one of these days I hope to record and mix a song worthwhile for humans to bear. </p>
-        </div>
-        <div class="images-container">
-            <img src="/lmn.jpeg" alt="Music">
-            <img src="/volleyball.jpeg" alt="Volleyball">
-        </div>
+        <div class="spacing-l"></div>
+        <div class="divider"></div>
     </div>
-
-    <div class="post-end-divider"></div>      
+    <section>
+        <div class="lore-container">
+            <h2>Lore</h2>
+            <div class="text-container">
+                <p>As an avid card gamer player for most of my existence - ranging from Dream Quest to hitting #1 on Hearthstone’s Europe leaderboards - game development has always lived in my heart rent-free. Years later, there is nothing more <color class='color2'>fulfilling</color> than using that inspiration to build my own card games and give back to a community I love.</p>
+                <figure>
+                    <span>Peter Whalen's Dream Quest</span>
+                    <img src="/dream_quest.jpg" alt="Dream Quest">
+                </figure>
+                <p>Outside work, you’ll find me bouncing on the volleyball court or <color class='color1'>cheerfully</color> yapping with friends. At home, I also spend a healthy chunk of time practicing music (drums, singing, guitar), and one of these days I hope to record and mix a song worthwhile for humans to bear. </p>
+            </div>
+            <div class="images-container">
+                <img src="/lmn.jpeg" alt="Music">
+                <img src="/volleyball.jpeg" alt="Volleyball">
+            </div>
+        </div>
+    </section>
+     
+    <div class="spacing-l"></div>
+    <div class="post-end-divider"></div> 
+    <div class="spacing-l"></div>
 </div>
 
 

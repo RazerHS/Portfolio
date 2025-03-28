@@ -1,11 +1,18 @@
 <script>
-    let {title, role, color, startDate, endDate, sideProject, logo} = $props(); 
+    let {title, role, color, startDate, endDate, sideProject, logo, rowSpan, columnSpan} = $props(); 
 
     const mainProjectColor = 'var(--color-secondary)';
     const sideProjectColor = 'var(--color-accent)';
 </script>
 
 <style lang='scss'>
+    .timeline-element-container {
+        @media (max-width: 1031px) {
+            grid-row: auto !important;
+            grid-column: auto !important;
+        }
+    }
+
     .timeline-element {
         display: flex;
         flex-direction: row;
@@ -92,10 +99,7 @@
     }
 </style>
 
-<div class="timeline-element-container">
-    <!-- <div class="logo-container">
-        <img src={logo} alt=''>
-    </div> -->
+<div class="timeline-element-container" style="grid-row: {rowSpan}; grid-column: {columnSpan}">
     <div class="timeline-element glass" style="background: linear-gradient(100deg, {sideProject ? sideProjectColor : mainProjectColor}, var(--color-primary));">
         <div class="backdrop"></div>
         <div class="heading">

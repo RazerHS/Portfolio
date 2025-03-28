@@ -445,11 +445,7 @@
             max-height: 2.25em;
         }
     }
-
-    .blank-divider {
-        height: var(--spacing-m);
-    } 
-
+   
     .post-start-divider {
         width: 10%;
         margin: var(--spacing-l) auto 0 auto;
@@ -493,7 +489,7 @@
             <article>{@html content}</article>
         </div>
     </div>
-    <div class="blank-divider"></div>
+    <div class="spacing-m"></div>
 </div>
 
 <Backdrop />
