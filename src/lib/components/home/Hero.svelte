@@ -207,7 +207,8 @@
     <img class='hero-image' src='/igi2.png' alt='Hero'/>
     <div class='heading'>
         <h1> Hi, I'm Igor.</h1>
-        <div class="divider"></div>
+        <p class='fancy-divider'>┗━━━━━༻❁༺━━━━━┛</p>
+        <!-- <div class="divider"></div> -->
         <h2> I develop <color class='color1'>systems</color>, <color class='color2'>tools</color>, and <color class='color3'>gameplay</color> for inspiring games.</h2>
     </div>
     <div class='contact-container'>

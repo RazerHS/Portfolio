@@ -42,6 +42,15 @@ html {
     }
 }
 
+@keyframes textGlowStrong {
+    from {
+        text-shadow: 0 0 5px currentColor, 0 0 20px currentColor;
+    }
+    to {
+        text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+    }
+}
+
 .glass {
         backdrop-filter: blur(128px) saturate(500%);
         -webkit-backdrop-filter: blur(128px) saturate(500%);
@@ -213,6 +222,10 @@ div .spacing-3xl {
 .color-accent {
     color: var(--color-primary);
     animation: textGlow 5s ease-in-out infinite alternate;
+}
+
+.fancy-divider {
+    animation: textGlowStrong 2s infinite ease-in-out alternate;
 }
 
 
