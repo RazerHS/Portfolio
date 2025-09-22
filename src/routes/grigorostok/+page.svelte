@@ -3,7 +3,7 @@
 
     let title = 'Grigorostok';
     let featuredImageSrc = 'posts/Grigorostok/grigorostok_featured.png';
-    let timeline = "September 2024 - February 2024";
+    let timeline = "September 2023 - February 2024";
     let role = 'Design, Programming';
     let tools = ['Unity', 'Odin', 'FMOD'];
 
