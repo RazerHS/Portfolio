@@ -1,5 +1,5 @@
 <script>
-    let {title, role, color, startDate, endDate, sideProject, logo, rowSpan, columnSpan} = $props(); 
+    let {title, role, color, startDate, duration, current, logo, rowSpan, columnSpan} = $props(); 
 
     const mainProjectColor = 'var(--color-secondary)';
     const sideProjectColor = 'var(--color-accent)';
@@ -74,8 +74,12 @@
         .divider {
             width: 70%;
             height: 0.1em;
-            background-color: white;
+            background-color: hsl(0, 0%, 70%);
             border-radius: 10px;
+        }
+
+        .duration {
+            color: hsl(0, 0%, 100%);
         }
     }
 
@@ -100,16 +104,17 @@
 </style>
 
 <div class="timeline-element-container" style="grid-row: {rowSpan}; grid-column: {columnSpan}">
-    <div class="timeline-element glass" style="background: linear-gradient(100deg, {sideProject ? sideProjectColor : mainProjectColor}, var(--color-primary));">
+    <div class="timeline-element glass" style="background: linear-gradient(100deg, {current ? sideProjectColor : mainProjectColor}, var(--color-primary));">
         <div class="backdrop"></div>
         <div class="heading">
             <p class='title'>{title}</p>
             <p class='role'>{role}</p>
         </div>
-        <div class="date-container">
+        <div class="logo hide-on-mobile"></div>
+        <div class="date-container hide-on-desktop">
             <p>{startDate}</p>
             <div class="divider"></div>
-            <p>{endDate}</p>
+            <p class=duration>{duration}</p>
         </div>
     </div>
 </div>

@@ -73,6 +73,7 @@
             grid-template-columns: repeat(3, 1fr);
             min-height: 160px;
             align-self: end;
+            padding-bottom: var(--spacing-xs);
 
             @media (max-width: 1000px) {
                 min-height: 140px;
@@ -160,20 +161,6 @@
         }
     }
 
-    .placeholder {
-        width: 3em;
-        height: 3em;
-
-        @media (max-width: 768px) {
-            width: 2.5em;
-            height: 2.5em;
-        }
-    }
-
-    p {
-        font: var(--p);
-    }
-
     h1, h2 {
         text-shadow: 2px 2px 16px rgb(0, 0, 0);
         text-shadow: 5px 5px 32px rgb(0, 0, 0);
@@ -189,7 +176,7 @@
         color: var(--color-primary);
         animation: textGlow 3s ease-in-out infinite alternate;
     }
-
+    
     color.color2 {
         color: var(--color-secondary);
         animation: textGlow 4s ease-in-out infinite alternate;
@@ -208,7 +195,6 @@
     <div class='heading'>
         <h1> Hi, I'm Igor.</h1>
         <p class='fancy-divider'>┗━━━━━༻❁༺━━━━━┛</p>
-        <!-- <div class="divider"></div> -->
         <h2> I develop <color class='color1'>systems</color>, <color class='color2'>tools</color>, and <color class='color3'>gameplay</color> for inspiring games.</h2>
     </div>
     <div class='contact-container'>

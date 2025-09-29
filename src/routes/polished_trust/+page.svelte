@@ -7,6 +7,7 @@
     let timeline = "February 2024 - July 2024";
     let role = 'Research, Design, Programming';
     let tools = ['Unity', 'Odin', 'PUN2'];
+    let size = 2;
 
 </script>
 

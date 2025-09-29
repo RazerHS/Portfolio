@@ -261,6 +261,27 @@
                 max-height: 0;
                 transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
             }
+
+            .trailer 
+            {
+                iframe {
+                    width: 100%;
+                    height: 500px;
+                }
+            }
+
+            .steam-widget-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                place-items: center;
+                width: 100%;
+
+                img {
+                    box-shadow: none;
+                    min-width: 60%;
+                    max-width: 60%;
+                }
+            }
         }
     }
 

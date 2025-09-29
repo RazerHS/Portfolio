@@ -87,10 +87,11 @@
     }
 
     .contact-container {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 0.1fr);
+        width: 100%;
         gap: var(--spacing-s);
-        font-size: 1.1rem;
-
+        
         @media (max-width: 1256px) {
             justify-content: center;
         }
@@ -127,13 +128,36 @@
         padding: 0 var(--spacing-m);
         margin: auto;
         max-width: 1344px;    
+        position: relative;
+    }
+    
+    .timeline-labels {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: var(--spacing-xl) 1fr;
+        width: 100%;
+        height: 99%;
+        position: absolute;
+        top: -96px;
+    }
+
+    .timeline-label-year {
+        height: 100%;
+        width: 10px;
+        border-left: 1px solid rgba(255, 255, 255, .8);
+        border-left-style: dashed;
+
+        p {
+            padding-left: var(--spacing-2xs);
+            margin-top: var(--spacing-3xs);
+        }
     }
 
     .timeline {
         width: 100%;
         margin: auto;
         display: grid;
-        grid-template-columns: repeat(20, 1fr);
+        grid-template-columns: repeat(40, 1fr);
         gap: var(--spacing-xs);
         opacity: 0;
         animation: loadIn 1s 0.5s forwards;
@@ -214,15 +238,27 @@
             </div>
         </div>
     </section>
-    <div class="spacing-l"></div>
+    <div class="spacing-3xl hide-on-mobile"></div>
+    <div class="spacing-xl hide-on-desktop"></div>
     <div class="timeline-container">
-        <div class="timeline">
-            <TimelineElement title='Ripe Render' role ='Tools & Systems Programmer' startDate='April &#39;24' endDate='Present' sideProject=true  logo='/teeko_logo.png' rowSpan="1 / 1" columnSpan="12 / 20" />
-            <TimelineElement title='Linx Interactive' role ='Graduation Intern' startDate='Feb &#39;24' endDate='July &#39;24' logo='/linx_logo.png' rowSpan="2 / 2" columnSpan="11 / 16" />
-            <TimelineElement title='Linx Interactive' role ='Programming Intern' startDate='Feb &#39;23' endDate='July &#39;23' logo='/linx_logo.png' rowSpan="3 / 3" columnSpan="4 / 9" />
-            <TimelineElement title='Unsealed Studios' role ='Lead Programmer' startDate='Sep &#39;22' endDate='Aug &#39;23' sideProject=true logo='/unsealed_logo.png' rowSpan="4 / 4" columnSpan="2 / 10" />
-            <TimelineElement title='Game Design' role ='Student' startDate='Sep &#39;20' endDate='July &#39;24' logo='/unsealed_logo.png' rowSpan="5 / 5" columnSpan="1 / 16" />
+        <div class="timeline-labels hide-on-mobile">
+            <p>2022</p>
+            <p>2023</p>
+            <p>2024</p>
+            <p>2025</p>
+            <div class="timeline-label-year"></div>
+            <div class="timeline-label-year"></div>
+            <div class="timeline-label-year"></div>
+            <div class="timeline-label-year"></div>
         </div>
+        <div class="timeline">
+            <TimelineElement title='Game Design' role ='Student' startDate='Sep &#39;20' duration='4 years' logo='/unsealed_logo.png' rowSpan="1 / 1" columnSpan="1 / 28" />
+            <TimelineElement title='Unsealed Studios' role ='Lead Programmer' startDate='Sep &#39;22' duration='1 year' logo='/unsealed_logo.png' rowSpan="2 / 2" columnSpan="7 / 20" />
+            <TimelineElement title='Linx Interactive' role ='Programming Intern' startDate='Feb &#39;23' duration='6 months' logo='/linx_logo.png' rowSpan="3 / 3" columnSpan="12 / 19" />
+            <TimelineElement title='Linx Interactive' role ='Graduation Intern' startDate='Feb &#39;24' duration='6 months' logo='/linx_logo.png' rowSpan="4 / 4" columnSpan="23 / 30" />
+            <TimelineElement title='Ripe Render' role ='Tools & Systems Programmer' startDate='April &#39;24' duration='Present' current=true  logo='/teeko_logo.png' rowSpan="5 / 5" columnSpan="24 / 40" />
+        </div>
+        <div class="spacing-xl hide-on-mobile"></div>
         <div class="spacing-l"></div>
         <div class="divider"></div>
     </div>
