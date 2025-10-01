@@ -1,11 +1,18 @@
 <script>
-    let {title, role, color, startDate, endDate, sideProject, logo} = $props(); 
+    let {title, role, color, startDate, duration, current, logo, rowSpan, columnSpan} = $props(); 
 
-    const mainProjectColor = 'var(--accent-color2)';
-    const sideProjectColor = 'var(--accent-color3)';
+    const mainProjectColor = 'var(--color-secondary)';
+    const sideProjectColor = 'var(--color-accent)';
 </script>
 
 <style lang='scss'>
+    .timeline-element-container {
+        @media (max-width: 1031px) {
+            grid-row: auto !important;
+            grid-column: auto !important;
+        }
+    }
+
     .timeline-element {
         display: flex;
         flex-direction: row;
@@ -67,8 +74,12 @@
         .divider {
             width: 70%;
             height: 0.1em;
-            background-color: white;
+            background-color: hsl(0, 0%, 70%);
             border-radius: 10px;
+        }
+
+        .duration {
+            color: hsl(0, 0%, 100%);
         }
     }
 
@@ -87,25 +98,23 @@
         img {
             max-width: 4em;
             max-height: 4em;
-            filter: drop-shadow(0 0 0.1rem var(--accent-color1)) drop-shadow(0 0 0.1rem var(--accent-color2));
+            filter: drop-shadow(0 0 0.1rem var(--color-primary)) drop-shadow(0 0 0.1rem var(--color-secondary));
         }
     }
 </style>
 
-<div class="timeline-element-container">
-    <!-- <div class="logo-container">
-        <img src={logo} alt=''>
-    </div> -->
-    <div class="timeline-element glass" style="background: linear-gradient(100deg, {sideProject ? sideProjectColor : mainProjectColor}, var(--accent-color1));">
+<div class="timeline-element-container" style="grid-row: {rowSpan}; grid-column: {columnSpan}">
+    <div class="timeline-element glass" style="background: linear-gradient(100deg, {current ? sideProjectColor : mainProjectColor}, var(--color-primary));">
         <div class="backdrop"></div>
         <div class="heading">
             <p class='title'>{title}</p>
             <p class='role'>{role}</p>
         </div>
-        <div class="date-container">
+        <div class="logo hide-on-mobile"></div>
+        <div class="date-container hide-on-desktop">
             <p>{startDate}</p>
             <div class="divider"></div>
-            <p>{endDate}</p>
+            <p class=duration>{duration}</p>
         </div>
     </div>
 </div>

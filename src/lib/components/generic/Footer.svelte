@@ -46,7 +46,7 @@
         img {
             width: 1em;
             height: 1em;
-            filter: drop-shadow(0 0 0.15rem var(--accent-color1)) drop-shadow(0 0 0.1rem var(--accent-color2));
+            filter: drop-shadow(0 0 0.15rem var(--color-primary)) drop-shadow(0 0 0.1rem var(--color-secondary));
             color: white;
         }
 

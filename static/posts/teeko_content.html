@@ -1,11 +1,23 @@
 <div class="content">
-    <p>When my best friend Antonio Ercolani says he wants to release a game, you can bet your entire horse farm he will go the extra mile to make something amazing. Antonio is working on releasing <color class='color2'>Teeko</color>, an action-adventure platformer inspired by the Costa Rican ‘La Mascarada’ celebration, to give his country some needed representation in the gaming industry. </p>
-    <!-- <img src='posts/Teeko/antonio.jpg'> -->
-    <img src='posts/Teeko/teeko_gameplay.gif'>
+    <!-- <img src='posts/Teeko/teeko_gameplay.gif'> -->
     
-    <p>To speed up programming, Antonio asked me for assistance, which I gladly accepted. While I am working on and off on the project, I come in to set up complex game architecture or useful tools to help the team work faster. One important aspect I contributed to was the <color class='color1'>Story Graph</color>, a narrative design tool that could support dialogue across many NPCs, levels, and languages. </p>
+    <div class="spacing-m"></div>
+    <div class="steam-widget-container">
+        <iframe class="hide-on-mobile" src="https://store.steampowered.com/widget/3650150/" frameborder="0" width="500" height="191"></iframe>  
+            <div class="hide-on-desktop wishlist-button glass">
+                <a href="https://store.steampowered.com/app/3650150/Teeko/" target="_blank"><p>Wishlist Here!</p></a>
+                <img class="steam-logo" src="/steam_logo.png" alt="Steam Logo">
+            </div>
+        <img src='/lags_badge_2025.png'>
+    </div>
+    <div class="spacing-xl"></div>
+    <div class="trailer">
+        <iframe src="https://www.youtube.com/embed/XooBIDYGdEw" title="Teeko - Official Trailer | Latin American Games Showcase 2025" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>               
+    </div>
+    
+    <p>I setup complex game architecture or useful tools to help the team work faster. One important aspect I contributed to was the <color class='color1'>Story Graph</color>, a narrative design tool that could support dialogue across many NPCs, levels, and languages. </p>
     <p>Many iterations later, the Story Graph became the backbone of Teeko’s efficient and easy-to-use narrative pipeline. You can read more about it down below: </p>
-    
+
     <button class='glass collapsable'><h2>The Story Graph</h2></button>
     <div class='collapsable-content glass collapsable-hidden'>
         <p>Prior to development, I surveyed the narrative team and collected a feature/usability list to make the Story Graph more relevant for our workflow than external solutions. After some more research, I found that the experimental Unity Graph API (which ShaderGraph is built upon) had built-in functionality to cover many important features, so it was chosen as the <color class='color3'>basis</color> for the Story Graph.</p>
@@ -22,16 +34,19 @@
         
         <p>All nodes also contain their own data which can be added or removed easily, as these fields are drawn using Odin Inspector. Adding additional fields required quite a bit of manual setup in UI toolkit, so to simplify the process, I configured Odin to draw them in ImGUI and then inserted them within an ImGUI container for use in UI toolkit.</p>
         
-        <pre><code class="cs">public void DrawNodeProperties(DialogueNode dialogueNode)
+        <div class="code-snippet">
+            <pre><code class="cs">public void DrawNodeProperties(DialogueNode dialogueNode)
 {
     IMGUIContainer mainImGuiContainer = new IMGUIContainer(OnDrawPropertyTree);
 
     dialogueNode.propertyTree = PropertyTree.Create(Data);
 
     dialogueNode.mainContainer.Add(mainImGuiContainer);
-}        </code></pre>
+}           </code></pre>
+        </div>
         
-        <pre><code class="cs">[Serializable]
+        <div class="code-snippet">
+            <pre><code class="cs">[Serializable]
 public class DialogueNodeData
 {
     [SerializeField, ColoredBoxGroup("Passage Settings", true, true), ShowIf("nodeType", NodeType.START)] private bool showLetterbox;
@@ -40,13 +55,15 @@ public class DialogueNodeData
     [SerializeField, ColoredBoxGroup("Data"), LabelWidth(70), EnumPaging, LabelText("Face")] private FacialExpressionType facialExpression;
     [SerializeField, ColoredBoxGroup("Data"), LabelWidth(70), HideLabel, TextArea] private string dialogueText;
 
-...     </code></pre>
-
+...         </code></pre>
+        </div>
+       
         <h3>Pretty Animation Previews</h3>
         <p>To animate dialogue text, we use Febucci’s Text Animator, in which previewing text was only possible inside of Text Mesh Pro in the editor. This made it tedious to visualize specific animations of our dialogue lines, so to make this easier, I set up a custom stage that instantiated our dialogue box and inserted any dialogue you hover within the story graph. </p>    
         <img src='posts/Teeko/storygraph_img_6.gif'>
 
-        <pre><code class="cs">private void CreateScenePreview()
+        <div class="code-snippet">
+            <pre><code class="cs">private void CreateScenePreview()
 {
     if (dialogueWidgetPreviewPrefab == null)
     {
@@ -66,7 +83,8 @@ public class DialogueNodeData
     {
         throw Log.Exception("Background dialogue widget component not found in root game object of preview!");
     }
-}       </code></pre>
+}           </code></pre>
+        </div>
 
         <p>By using the mouse, you could stop and play the text’s current animations. Combined with a prefab of our actual dialogue widget, you can get a proper dialogue preview within the story graph:</p>
         <img src='posts/Teeko/storygraph_img_8.gif'>
@@ -82,6 +100,12 @@ public class DialogueNodeData
     
         <div class="collapsable-end-divider"></div>      
     </div>
+
+    <div class="spacing-m"></div>
+
+    <!-- <button class='glass collapsable'><h2>Story Events</h2></button>
+    <div class='collapsable-content glass collapsable-hidden'>
+    </div> -->
 
     <div class="post-end-divider"></div>      
 </div>

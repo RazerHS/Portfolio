@@ -15,7 +15,8 @@
         <p>Each aspect of the weather had its own lower and upper bounds precalculated and set to already look good for our level. As such, when our designer sets a parameter from [0-1], it gets mapped to the pre-established bounds. This helps avoid artifacts when the system procedurally mixes all the parameters and creates new weather conditions.</p>
         <img src='posts/Grigorostok/weather_img_2.png'>
         
-        <pre><code class="cs">private void SetCurrentEvaluatedWeatherDataByDay(int day, float percentage)
+        <div class="code-snippet">
+            <pre><code class="cs">private void SetCurrentEvaluatedWeatherDataByDay(int day, float percentage)
 {
     ...
 
@@ -33,18 +34,20 @@
     CalculateWetness(rainStrength, percentage);
     SetWetness(wetness);
 
-   ...
+    ...
 
     SetRainParticleEmission(rainStrength);
 
     ChangeWeatherForRandomParameters(percentage, windStrength);
-}       </code></pre>
+}           </code></pre>
+        </div>
 
         <h3>Droplets Galore</h3>
         <p>To prevent the weather from being too static, certain lower-impact properties were handled by chance. Combined with the user-set parameters for each day, the same values can have slight variation in their appearance across different days, which is more akin to real-world weather.</p>
         <img src='posts/Grigorostok/weather_img_3.png'>
         
-        <pre><code class="cs">private void ChangeWeatherForRandomParameters(float percentage, float windStrength)
+        <div class="code-snippet">
+            <pre><code class="cs">private void ChangeWeatherForRandomParameters(float percentage, float windStrength)
 {
     if (randomWeatherParameters == null)
     {
@@ -66,8 +69,8 @@
 
     CalculateNewRandomWeatherParameters();
     CalculateNewTimeToChangeWeatherParameters(percentage);
-}       </code></pre>
-
+}           </code></pre>
+        </div>
 
         <p>To visually map our 24h time with Unity’s AnimationCurve fields, I used Odin Inspector’s progress bar and set its width to be that of the animation curves. This way, the user can move the progress bar and use it as a reference for setting each property at a specified time of day and link it to important narrative beats.</p>
         <img src='posts/Grigorostok/weather_img_4.png'>
@@ -109,7 +112,8 @@
       
         <p>Using this tool saved us hours and hours of manual labor of dragging textures and materials all over the place - all with just the click of a button! I very much enjoyed digging deeper into Unity and finding solutions for features such as manually extracting the materials from a model (like in the Inspector) and fetching exposed shader properties.</p>
     
-        <pre><code class="cs">private List&lt;Material&gt; ExtractMaterials(string modelPath)
+        <div class="code-snippet">
+            <pre><code class="cs">private List&lt;Material&gt; ExtractMaterials(string modelPath)
 {
     int result = 0;
 
@@ -158,9 +162,11 @@
     Log.Write($"Loaded &lt;b&gt;{extractedMaterials.Count}&lt;/b&gt; materials from the model's directory!");
 
     return extractedMaterials;
-}       </code></pre>
+}           </code></pre>
+        </div>
 
-        <pre><code class="cs">private List<string> GetShaderPropertyList()
+        <div class="code-snippet">
+            <pre><code class="cs">private List<string> GetShaderPropertyList()
 {
     List<string> properties = new();
 
@@ -187,7 +193,8 @@
     }
 
     return properties;
-}       </code></pre>
+}           </code></pre>
+        </div>
         
         <p>Next steps would include automatically replacing each model in its corresponding prefab or game object, but due to time constraints during the project, other tasks were prioritized instead. However, that would be a great next step for integrating the tool into other projects and making its own stand-alone asset.</p>
     

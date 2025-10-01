@@ -1,5 +1,5 @@
 <script>
-    import '$lib/styles/style.scss';
+    import '$lib/styles/app.scss';
 
     let {src, alt, link, fadeInDelay, text} = $props();
 </script>
@@ -8,16 +8,10 @@
     a {
         scale: 1;
         transition: scale 0.2s ease-in-out;
-        filter: drop-shadow(0 0 0.5rem var(--accent-color1)) drop-shadow(0 0 0.3rem var(--accent-color2));
-        max-width: 3em;
-        max-height: 3em;
+        filter: drop-shadow(0 0 0.5rem var(--color-primary)) drop-shadow(0 0 0.3rem var(--color-secondary));
+        aspect-ratio: 1/1;
         opacity: 0;
         position: relative;
-
-        @media (max-width: 768px) {
-            max-width: 2.5em;
-            max-height: 2.5em;
-        }
     }
 
     a:hover {

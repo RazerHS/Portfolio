@@ -1,7 +1,43 @@
 <script> 
-    import '$lib/styles/style.scss';
+    import '$lib/styles/app.scss';
+    import { onMount, onDestroy } from 'svelte';
 
-    let {name, tools, tags, description, featuredImageSrc} = $props();
+    let {name, tools, tags, description, featuredImageSrc, size} = $props();
+    let {content} = $state('');
+
+    let observer;
+    let interval = null;
+    let contentContainer;
+
+    async function fetchContent() {
+        const response = await fetch(`/projects/${name.toLowerCase().replace(' ', '_')}_project.html`);
+        content = await response.text();
+    }
+
+    onMount(() => {
+        fetchContent();
+
+        observer = new MutationObserver(() => {
+            addCollapsableListeners();
+        });
+
+        if (contentContainer) {
+            observer.observe(contentContainer, { childList: true, subtree: true });
+        }
+
+        interval = setInterval(() => {
+            fetchContent();
+        }, 1000); 
+    });
+
+    onDestroy(() => {
+        if (observer) {
+            observer.disconnect();
+        }
+
+        clearInterval(interval);
+    });
+
 </script>
 
 <style lang="scss">
@@ -11,8 +47,6 @@
             height: 0.05em;
             background: rgba(255, 255, 255, 0.15);
             display: flex;
-            margin-top: -0.5em;
-            margin-bottom: 0.5em;
             margin: -0.5em 0 0.5em 0;
         }
     }
@@ -20,15 +54,6 @@
     :root {
         --gradient-color: rgb(0, 0, 0);
     }
-
-    p {
-        font-family: 'Lexend';
-        font-size: 1.1em;
-
-        @media (max-width: 768px) {
-            font-size: 0.95em;
-        }
-    }    
 
     .container {
         border-radius: 12px;
@@ -47,8 +72,8 @@
         box-shadow: 0px 0px 100px 3px rgba(14, 182, 194, 0.4);
 
         h2 {
-            color: var(--accent-color1);
-            text-decoration-color: var(--accent-color1);
+            color: var(--color-primary);
+            text-decoration-color: var(--color-primary);
             text-underline-offset: 0.1em;
         }
     }
@@ -68,24 +93,11 @@
         padding: 0 1em;
     }  
 
-    .description {
-        height: fit-content;
-        padding-bottom: 1em;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-        
-        @media (max-width: 768px) {
-            margin-top: 0.25em;
-            padding-bottom: 0.5em;
-            min-height: 0;
-        }
-    }
-
     .title-container {
-        display: flex;
-        flex-shrink: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         overflow: hidden;
-        padding-top: 0.5em;
+        padding-top: var(--spacing-2xs);
     }
 
     .tools-container {
@@ -93,11 +105,10 @@
         display: flex;
         align-items: center; 
         justify-content: flex-end;
-        column-gap: 0.1em;
+        column-gap: var(--spacing-3xs);
 
         max-height: 3em;
         width: 100%;
-        padding: 0.25em 0.1em 0.5em 1em;
     }
 
     img {
@@ -118,61 +129,22 @@
         margin: 0;
     }
 
-    .tags-container {
-        display: flex;
-        gap: 0.5em 1em;
-        flex-shrink: 1;
-        flex-wrap: wrap;
-        height: auto;
-        align-items: center;
-        padding-bottom: 1em;
-    }
-
-    .tag {
-        padding: 0em 0.3em;
-        height: 3em;
-        border: 3px solid rgba(255, 255, 255, 0.124);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(211deg, rgba(59,81,223,1) 0%, rgba(86,51,215,1) 9%, rgba(21,138,183,1) 65%, rgba(8,149,177,1) 72%, rgba(43,175,201,1) 80%);
-        font-size: 1rem;
-    }
-
-    div.tools {
-        background: linear-gradient(211deg, var(--accent-color2) 20%, var(--gradient-color) 130%);
-    }
-
-    div.pitching {
-        background: linear-gradient(211deg, var(--accent-grey) 0%, var(--gradient-color) 130%);
-    }
-
-    div.systems {
-        background: linear-gradient(211deg, var(--accent-color1) 0%, var(--gradient-color) 130%);
-    }
-
-    div.gameplay {
-        background: linear-gradient(211deg, var(--accent-color3) 0%, var(--gradient-color) 130%);
-    }
-
     h2 {
-        font-family: 'Londrina Solid';
         margin: 0;
         display: flex;
         align-items: center;
         align-content: center;
-        font-size: 250%;
         display: block;
         width: 100%;
         white-space: nowrap;
         text-overflow: ellipsis;
-        color: var(--accent-color2);
+        color: var(--color-secondary);
         text-decoration: underline 0.05em rgba(0, 0, 0, 0);
         text-underline-offset: 0.2em;
         transition: all 0.2s ease-out;
+        font: var(--h2);
 
         @media (max-width: 1024px) {
-            font-size: 210%;
             text-decoration: underline;
         }
     }
@@ -204,7 +176,7 @@
 </style>
 
 
-<div class='container glass'>
+<div class='container glass' style='grid-columns: span {size};'>
     <a href='{"/" + name.toLowerCase().replace(' ', '_')}' aria-label="project"> </a>    
     <div class='img-container'>
         <img src={featuredImageSrc} alt={name}>
@@ -225,6 +197,11 @@
                     <p> {tag}
                 </div>
             {/each}
-        </div>    
+        </div>   
+          <div class='content-container'>
+        <div bind:this={contentContainer}>
+            <article>{@html content}</article>
+        </div>
+    </div> 
     </div>
 </div>
