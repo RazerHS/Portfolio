@@ -275,11 +275,27 @@
                 grid-template-columns: 1fr 1fr;
                 place-items: center;
                 width: 100%;
+                row-gap: var(--spacing-l);
 
                 img {
                     box-shadow: none;
                     min-width: 60%;
                     max-width: 60%;
+                }
+
+                p {
+                    text-align: center;
+                }
+
+                @media (max-width: 750px) {
+                    grid-template-columns: 1fr;
+                }
+
+                .wishlist-button {
+                    width: 200px;
+                    display: grid;
+                    place-items: center;
+                    grid-template-columns: 1fr 0.75fr;
                 }
             }
         }

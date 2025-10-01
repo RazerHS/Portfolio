@@ -91,6 +91,7 @@
         grid-template-columns: repeat(3, 0.1fr);
         width: 100%;
         gap: var(--spacing-s);
+        min-height: 50px;
         
         @media (max-width: 1256px) {
             justify-content: center;

@@ -94,7 +94,7 @@
         width: 55vw;
         right: 0;
         top: 0;
-        height: 10em;
+        height: 8em;
         position: absolute;
         border-radius: 20px;
         overflow: hidden;
@@ -112,10 +112,6 @@
             position: relative;
             z-index: 20;
         }
-
-        a {
-            
-        }
     }
 
     .nav-mobile-bg {
@@ -130,15 +126,15 @@
     }
 
     .mobile-menu-active {
-        transform: translateX(10%);
-        transition: all 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        transform: translateX(20%);
+        transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
         content: '☰';
         overflow: hidden;
     }
 
     .mobile-menu-hidden {
         transform: translateX(100%);
-        transition: all 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
         content: '☓';
         overflow: hidden;
     }
@@ -150,14 +146,14 @@
     <nav class='nav-desktop hide-on-mobile'>
         <a href='/'>Work</a>
         <a href='/about'>About</a>
-        <a href='' class='disabled'>Dabbles</a>
+        <!-- <a href='' class='disabled'>Dabbles</a> -->
     </nav>
     <div class='nav-mobile glass {mobileNavActive ? "mobile-menu-active" : "mobile-menu-hidden"}'>
         <div class="nav-mobile-bg"></div>   
         <nav>
             <a href='/'>Work</a>
             <a href='/about'>About</a>
-            <a href='' class='disabled'>Dabbles</a>
+            <!-- <a href='' class='disabled'>Dabbles</a> -->
         </nav>
     </div>   
     <div class="hamburger-wrapper">
