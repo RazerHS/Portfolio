@@ -4,7 +4,6 @@
 
 <style lang='scss'>
     footer {
-        width: 100%;
         height: 20em;
         font-family: Lexend;
         box-shadow: 0 8px 10px -10px rgb(142, 142, 142) inset;
